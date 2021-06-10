@@ -1,3 +1,5 @@
+const { exception } = require("console");
+const { EROFS } = require("constants");
 const { db } = require("./firebase");
 /**
  *
@@ -12,8 +14,8 @@ async function ajout(collection, id, data) {
 
     return collection + " est ajoute";
   } catch (err) {
-    console.log(err.message);
-    return err;
+    console.log("can't add on " + collection);
+    throw new Error(err);
   }
 }
 async function mettre(collection, id, data) {
@@ -22,7 +24,7 @@ async function mettre(collection, id, data) {
     return "mise à jour effectué";
   } catch (err) {
     console.log("Error cant update : " + err);
-    return err;
+    throw new Error(err);
   }
 }
 async function obtenir(collection, id) {
@@ -37,11 +39,28 @@ async function obtenir(collection, id) {
     }
   } catch (error) {
     console.log(" can't get " + collection + " for this reasons: " + error);
-    return " can't get " + collection + " for this reasons: " + error;
+    throw new Error(" can't get " + collection + " for this reasons: " + error);
+  }
+}
+async function supprimer(collection, id) {
+  try {
+    const docSnap = await db.collection(collection).doc(id).get();
+    if (docSnap.exists) {
+      await docSnap.ref.delete();
+      return collection + " est supprimé";
+    } else {
+      return collection + " déjà unexistant";
+    }
+  } catch (error) {
+    console.log(" can't delete " + collection + " for this reasons: " + error);
+    throw new Error(
+      " can't delete " + collection + " for this reasons: " + error
+    );
   }
 }
 module.exports = {
   ajout: ajout,
   mettre: mettre,
   obtenir: obtenir,
+  supprimer: supprimer,
 };

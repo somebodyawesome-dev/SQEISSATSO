@@ -2,50 +2,51 @@ const { db } = require("../../configs/firebase");
 const { ajout, mettre, obtenir, supprimer } = require("../../configs/dao");
 
 module.exports = function (app) {
-  app.post("/utilisateur", async (req, res) => {
-    const utilisateurDATA = {
+  app.post("/étudiant", async (req, res) => {
+    const étudiantDATA = {
+      id: req.body.id,
+      nom: req.body.nom,
+      prenom: req.body.prenom,
+      filiere: req.body.filiere,
+      dep: db.collection("étudiant").doc(req.body.dep),
+    };
+    try {
+      res.send(await ajout("étudiant", étudiantDATA.id, étudiantDATA));
+    } catch (err) {
+      console.log(err.message);
+      res.send(err.message);
+    }
+  });
+
+  app.get("/étudiant/:étudiantID", async (req, res) => {
+    const étudiantNom = req.params.étudiantID;
+    try {
+      res.send(await obtenir("étudiant", étudiantNom));
+    } catch (err) {
+      console.log(err.message);
+      res.send(err.message);
+    }
+  });
+
+  app.put("/étudiant", async (req, res) => {
+    const étudiant = {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
       filiere: req.body.filiere,
     };
     try {
-      res.send(await ajout("utilisateur", utilisateurDATA.id, utilisateurDATA));
+      res.send(await mettre("étudiant", étudiant.id));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
     }
   });
 
-  app.get("/utilisateur/:utilisateurID", async (req, res) => {
-    const utilisateurNom = req.params.utilisateurID;
+  app.delete("/étudiant", async (req, res) => {
+    const étudiant = req.body.id;
     try {
-      res.send(await obtenir("utilisateur", utilisateurNom));
-    } catch (err) {
-      console.log(err.message);
-      res.send(err.message);
-    }
-  });
-
-  app.put("/utilisateur", async (req, res) => {
-    const utilisateur = {
-      id: req.body.id,
-      nom: req.body.nom,
-      prenom: req.body.prenom,
-      filiere: req.body.filiere,
-    };
-    try {
-      res.send(await mettre("utilisateur", utilisateur.id));
-    } catch (err) {
-      console.log(err.message);
-      res.send(err.message);
-    }
-  });
-
-  app.delete("/utilisateur", async (req, res) => {
-    const utilisateur = req.body.id;
-    try {
-      res.send(await supprimer("utilisateur", utilisateur));
+      res.send(await supprimer("étudiant", étudiant));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);

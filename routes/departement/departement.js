@@ -1,5 +1,5 @@
 const { db } = require("../../configs/firebase");
-const { ajout, mettre, obtenir } = require("../../configs/dao");
+const { ajout, mettre, obtenir, supprimer } = require("../../configs/dao");
 
 module.exports = function (app) {
   app.post("/departement", async (req, res) => {
@@ -7,44 +7,43 @@ module.exports = function (app) {
       id: req.body.id,
       nomdep: req.body.nomdep,
     };
-    res.send(await ajout("departement", departementData.id, departementDATA));
+    try {
+      res.send(await ajout("departement", departementDATA.id, departementDATA));
+    } catch (err) {
+      console.log(err.message);
+      res.send(err.message);
+    }
   });
   app.get("/departement/:departementID", async (req, res) => {
     const departementNom = req.params.departementID;
     try {
-      const departementDoc = await db
-        .collection("departement")
-        .doc(departementNom)
-        .get();
-      if (departementDoc.exists) {
-        res.status(200).json(departementDoc.data());
-      } else {
-        res
-          .status(404)
-          .send(
-            "Error Cant get departement : departement document doesn't exist"
-          );
-      }
-    } catch (error) {
-      console.log(" can't get character for this reasons: " + error);
-      res.send(" can't get character for this reasons: " + error);
+      res.send(await obtenir("departement", departementNom));
+    } catch (err) {
+      console.log(err.message);
+      res.send(err.message);
     }
   });
 
   app.put("/departement", async (req, res) => {
+    const departement = {
+      id: req.body.id,
+      nomdep: req.body.nomdep,
+    };
     try {
-      const departement = {
-        id: req.body.id,
-        nomdep: req.body.nomdep,
-      };
-      await db
-        .collection("departement")
-        .doc(departement.id)
-        .update(departement);
-      res.send(departement);
+      res.send(await mettre("departement", departement.id, departement));
     } catch (err) {
-      console.log("Error cant update : " + err);
-      res.send(err);
+      console.log(err.message);
+      res.send(err.message);
+    }
+  });
+
+  app.delete("/departement", async (req, res) => {
+    const departement = req.body.id;
+    try {
+      res.send(await supprimer("departement", departement));
+    } catch (err) {
+      console.log(err.message);
+      res.send(err.message);
     }
   });
 };

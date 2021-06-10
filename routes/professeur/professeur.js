@@ -2,50 +2,52 @@ const { db } = require("../../configs/firebase");
 const { ajout, mettre, obtenir, supprimer } = require("../../configs/dao");
 
 module.exports = function (app) {
-  app.post("/utilisateur", async (req, res) => {
+  app.post("/professeur", async (req, res) => {
     const utilisateurDATA = {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
       filiere: req.body.filiere,
+      ref: db.collection("utilisateur").doc(req.body.ref),
     };
     try {
-      res.send(await ajout("utilisateur", utilisateurDATA.id, utilisateurDATA));
+      await ajout("utilisateur", utilisateurDATA.id, utilisateurDATA);
+      res.send(await ajout("professeur", professeurDATA.id, professeurDATA));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
     }
   });
 
-  app.get("/utilisateur/:utilisateurID", async (req, res) => {
-    const utilisateurNom = req.params.utilisateurID;
+  app.get("/professeur/:professeurID", async (req, res) => {
+    const professeurNom = req.params.professeurID;
     try {
-      res.send(await obtenir("utilisateur", utilisateurNom));
+      res.send(await obtenir("professeur", professeurNom));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
     }
   });
 
-  app.put("/utilisateur", async (req, res) => {
-    const utilisateur = {
+  app.put("/professeur", async (req, res) => {
+    const professeur = {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
       filiere: req.body.filiere,
     };
     try {
-      res.send(await mettre("utilisateur", utilisateur.id));
+      res.send(await mettre("professeur", professeur.id));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
     }
   });
 
-  app.delete("/utilisateur", async (req, res) => {
-    const utilisateur = req.body.id;
+  app.delete("/professeur", async (req, res) => {
+    const professeur = req.body.id;
     try {
-      res.send(await supprimer("utilisateur", utilisateur));
+      res.send(await supprimer("professeur", professeur));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
