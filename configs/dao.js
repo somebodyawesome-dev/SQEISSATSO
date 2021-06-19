@@ -58,9 +58,19 @@ async function supprimer(collection, id) {
     );
   }
 }
+async function ajoutAvecCleAleatoire(collection, data) {
+  try {
+    await db.collection(collection).add(data);
+    return "object de " + collection + " est ajoutee";
+  } catch (error) {
+    console.log("can't add in " + collection);
+    throw new Error(err);
+  }
+}
 module.exports = {
   ajout: ajout,
   mettre: mettre,
   obtenir: obtenir,
   supprimer: supprimer,
+  ajoutAvecCleAleatoire: ajoutAvecCleAleatoire,
 };

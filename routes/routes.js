@@ -3,8 +3,8 @@ module.exports = function (app) {
 
   require("./utilisateur/utilisateur")(app);
   require("./departement/departement")(app);
-  require("./formulaire/formulaireE")(app);
-  require("./formulaire/formulaireP")(app);
+  require("./formulaire/formulaire")(app);
+
   require("./réponse/réponseE")(app);
   require("./réponse/réponseP")(app);
   require("./matériel/matériel")(app);
