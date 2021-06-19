@@ -1,5 +1,5 @@
 module.exports = function (app) {
-  //app.use(verifLogin);
+  require("./login/login")(app);
 
   require("./utilisateur/utilisateur")(app);
   require("./departement/departement")(app);

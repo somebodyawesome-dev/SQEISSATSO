@@ -7,8 +7,8 @@ module.exports = function (app) {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
-      filiere: req.body.filiere,
-      ref: db.collection("utilisateur").doc(req.body.ref),
+      adress: req.body.adress,
+      mdp: req.body.mdp,
     };
     try {
       await ajout("utilisateur", utilisateurDATA.id, utilisateurDATA);
@@ -34,7 +34,8 @@ module.exports = function (app) {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
-      filiere: req.body.filiere,
+      adress: req.body.adress,
+      mdp: req.body.mdp,
     };
     try {
       res.send(await mettre("professeur", professeur.id));

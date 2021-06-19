@@ -4,12 +4,13 @@ const { ajout, mettre, obtenir, supprimer } = require("../../configs/dao");
 module.exports = function (app) {
   app.post("/formulaireP", async (req, res) => {
     const formulairePDATA = {
-      id: req.body.id,
-      filiere: req.body.filiere,
-      dep: db.collection("formulaireP").doc(req.body.dep),
+      num: req.body.num,
+      question: req.body.question,
     };
     try {
-      res.send(await ajout("formulaireP", formulairePDATA.id, formulairePDATA));
+      res.send(
+        await ajout("formulaireP", formulairePDATA.num, formulairePDATA)
+      );
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
@@ -17,7 +18,7 @@ module.exports = function (app) {
   });
 
   app.get("/formulaireP/:formulairePID", async (req, res) => {
-    const formulairePNom = req.params.utilisateurID;
+    const formulairePNom = req.params.formulairePID;
     try {
       res.send(await obtenir("formulaireP", formulairePNom));
     } catch (err) {
@@ -28,12 +29,12 @@ module.exports = function (app) {
 
   app.put("/formulaireP", async (req, res) => {
     const formulaireP = {
-      id: req.body.id,
+      num: req.body.num,
 
-      filiere: req.body.filiere,
+      question: req.body.question,
     };
     try {
-      res.send(await mettre("formulaireP", formulaireE.id));
+      res.send(await mettre("formulaireP", formulaireE.num));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);

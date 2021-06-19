@@ -6,8 +6,8 @@ module.exports = function (app) {
     const réponsePDATA = {
       id: req.body.id,
 
-      filiere: req.body.filiere,
-      dep: db.collection("réponseP").doc(req.body.dep),
+      commentaire: req.body.commentaire,
+      note: req.body.note,
     };
     try {
       res.send(await ajout("réponseP", réponsePDATA.id, réponsePDATA));
@@ -31,7 +31,8 @@ module.exports = function (app) {
     const réponseP = {
       id: req.body.id,
 
-      filiere: req.body.filiere,
+      commentaire: req.body.commentaire,
+      note: req.body.note,
     };
     try {
       res.send(await mettre("réponseP", réponseP.id));

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <img
+          src="img/issat.png"
+          alt=""
+          style="width: 120px; height: 60px; margin-left: 5%; margin-top: 10px"
+        />
+        <ul>
+          <li>Inscription</li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="connexion">
+      <style>
+        input[type="text"],
+        input[type="password"],
+        select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+          width: 100%;
+          background-color: #5f90ba;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+          background-color: white;
+          color: #5f90ba;
+        }
+      </style>
+      <div class="formconnexion">
+        <img src="img/connexion1.png" alt="" style="align-self: center" />
+        <div
+          style="
+            background-color: #5f8fba75;
+            border-radius: 4px;
+            padding: 10px 20px;
+          "
+        >
+          <form>
+            <label for="adress">Adress :</label>
+            <input
+              type="text"
+              id="adress"
+              name="adress"
+              placeholder="adress..."
+            />
+            <label for="mdp">Mot de passe :</label>
+
+            <input
+              type="password"
+              id="mdp"
+              name="mdp"
+              placeholder="mot de passe..."
+            />
+            <input type="submit" value="Connexion" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <section style="background-color: #5f90ba">
+      <ul class="footer" style="display: flex">
+        <li>CONTACTEZ-NOUS</li>
+        <li>PAGE FACEBOOK</li>
+        <li>NOTRE TELEPHONE</li>
+        <li>OU-EST-NOUS</li>
+      </ul>
+    </section>
+  </body>
+</html>

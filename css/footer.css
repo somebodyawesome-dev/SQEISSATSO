@@ -1,0 +1,20 @@
+footer {
+  list-style-type: none;
+  text-decoration: none;
+  list-style: none;
+  background-color: white;
+  border-top: solid 1px rgba(219, 219, 219, 0.356);
+  box-shadow: 0px 10px 10px 4px rgba(192, 192, 192, 0.473);
+}
+
+footer a {
+  color: black;
+}
+
+footer a:hover {
+  color: gray;
+}
+
+footer li {
+  padding: 4px 5px;
+}

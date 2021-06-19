@@ -1,16 +1,17 @@
 const { db } = require("../../configs/firebase");
 const { ajout, mettre, obtenir, supprimer } = require("../../configs/dao");
-
+const { Utilisateur } = require("../../types/Utilisateur/Utilisateur");
 module.exports = function (app) {
   app.post("/utilisateur", async (req, res) => {
-    const utilisateurDATA = {
+    const utilisateur = new Utilisateur({
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
-      filiere: req.body.filiere,
-    };
+      adress: req.body.adress,
+      mdp: req.body.mdp,
+    });
     try {
-      res.send(await ajout("utilisateur", utilisateurDATA.id, utilisateurDATA));
+      res.send(await ajout("utilisateur", utilisateur.id, JSON.parse(JSON.stringify(utilisateur))));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
@@ -32,7 +33,8 @@ module.exports = function (app) {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
-      filiere: req.body.filiere,
+      adress: req.body.adress,
+      mdp: req.body.mdp,
     };
     try {
       res.send(await mettre("utilisateur", utilisateur.id));

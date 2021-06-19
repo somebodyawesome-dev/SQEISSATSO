@@ -4,11 +4,14 @@ const { ajout, mettre, obtenir, supprimer } = require("../../configs/dao");
 module.exports = function (app) {
   app.post("/departement", async (req, res) => {
     const departementDATA = {
-      id: req.body.id,
+      iddep: req.body.iddep,
       nomdep: req.body.nomdep,
+      designation: req.body.designation,
     };
     try {
-      res.send(await ajout("departement", departementDATA.id, departementDATA));
+      res.send(
+        await ajout("departement", departementDATA.iddep, departementDATA)
+      );
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
@@ -26,11 +29,12 @@ module.exports = function (app) {
 
   app.put("/departement", async (req, res) => {
     const departement = {
-      id: req.body.id,
+      iddep: req.body.iddep,
       nomdep: req.body.nomdep,
+      designation: req.body.designation,
     };
     try {
-      res.send(await mettre("departement", departement.id, departement));
+      res.send(await mettre("departement", departement.iddep, departement));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
@@ -38,7 +42,7 @@ module.exports = function (app) {
   });
 
   app.delete("/departement", async (req, res) => {
-    const departement = req.body.id;
+    const departement = req.body.iddep;
     try {
       res.send(await supprimer("departement", departement));
     } catch (err) {

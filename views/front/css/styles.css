@@ -1,0 +1,231 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+body .container {
+  width: 100%;
+  height: 100%;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+body .container section {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+h1 {
+  text-shadow: 3px 3px #4f4c6b;
+}
+.nav {
+  display: sticky;
+  top: 0;
+  height: 80px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: rgb(252, 252, 252);
+  border-bottom: 0.3px solid rgba(128, 128, 128, 0.288);
+  box-shadow: 4px 6px 25px #5f90ba;
+}
+header ul {
+  margin: 10px 5%;
+  list-style-type: none;
+  float: right;
+  display: inline-block;
+  display: inline-flex;
+}
+header ul li {
+  margin: 15px 5px;
+  padding: 10px 12px;
+  font: solid 20px rgb(95, 143, 186) verdana;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: larger;
+  font-weight: bolder;
+}
+header ul li:hover {
+  cursor: pointer;
+  background-color: rgb(95, 144, 186, 0.3);
+}
+/* .section {
+  width: 100%;
+  height: 500px;
+
+  padding: 100px 20px;
+} */
+.section-suivit_qualite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 80%;
+}
+/* .section-departement {
+  padding: 5px 20px;
+  height: 680px;
+
+  width: 100%;
+  background-color: #fbfdff;
+  display: flex;
+  
+  margin: 30px auto;
+} */
+.departimg {
+  width: 50%;
+  margin-top: 50px auto;
+}
+.buttons {
+  margin-top: 150px;
+}
+
+.section-departement img {
+  width: 45%;
+  border-radius: 10px;
+  height: 200px;
+  margin: 5px;
+}
+.depart-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  top: 80px;
+  margin: 180px auto;
+
+  width: 45%;
+  width: 50%;
+}
+
+@media (max-width: 700px) {
+  .buttons {
+    margin-top: 10px;
+  }
+
+  .section-departement {
+    height: 900px;
+    flex-direction: column;
+
+    margin: 0 auto;
+  }
+  .departimg {
+    width: 100%;
+    margin: 15px auto;
+  }
+  .departimg1 {
+    width: 90%;
+    margin: auto;
+
+    border-radius: 14px;
+  }
+  .depart-btn {
+    margin: 30px 10px;
+    width: 100%;
+  }
+  .section-departement img {
+    height: 150px;
+  }
+}
+.btn {
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #5f90ba;
+  color: white;
+  padding: 20px 30px;
+  margin: 15px;
+  font-size: larger;
+}
+.btn:hover {
+  border: 1px solid #5f90ba;
+  border-radius: 5px;
+  background-color: #5f90ba;
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.navbar {
+  margin: 0 10%;
+  justify-content: space-between;
+  list-style-type: none;
+  background-color: #5f90ba;
+}
+.navbar li {
+  padding: 10px 30px;
+}
+.navbar li:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #5f90ba;
+}
+@media (max-width: 700px) {
+  .navbar {
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+  }
+  .navbar li {
+    text-align: center;
+  }
+}
+.inscrire {
+  display: flex;
+  margin: 170px 50px;
+  height: 650px;
+}
+.forminscrire {
+  width: 30%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.textinscrire {
+  width: 63%;
+  display: flex;
+  flex-direction: column;
+  font-size: 50px;
+
+  margin-top: 150px;
+}
+
+@media (max-width: 700px) {
+  .inscrire {
+    display: flex;
+    margin: 50px auto;
+    flex-direction: column;
+  }
+  .forminscrire {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .textinscrire {
+    margin: 15px;
+    font-size: 30px;
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+.connexion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto auto;
+  background-color: #b5cbdf;
+}
+.formconnexion {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 150px auto;
+}

@@ -5,9 +5,9 @@ module.exports = function (app) {
   app.post("/matière", async (req, res) => {
     const réponsePDATA = {
       id: req.body.id,
-
-      filiere: req.body.filiere,
-      dep: db.collection("matière").doc(req.body.dep),
+      niveau: req.body.niveau,
+      nom: req.body.nom,
+      designation: req.body.designation,
     };
     try {
       res.send(await ajout("matière", matireDATA.id, matièreDATA));
@@ -30,8 +30,9 @@ module.exports = function (app) {
   app.put("/matière", async (req, res) => {
     const matière = {
       id: req.body.id,
-
-      filiere: req.body.filiere,
+      niveau: req.body.niveau,
+      nom: req.body.nom,
+      designation: req.body.designation,
     };
     try {
       res.send(await mettre("matière", matière.id));

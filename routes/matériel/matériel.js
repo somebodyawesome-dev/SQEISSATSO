@@ -4,13 +4,13 @@ const { ajout, mettre, obtenir, supprimer } = require("../../configs/dao");
 module.exports = function (app) {
   app.post("/matériel", async (req, res) => {
     const matérielDATA = {
-      id: req.body.id,
-
-      filiere: req.body.filiere,
-      dep: db.collection("matériel").doc(req.body.dep),
+      num: req.body.num,
+      designation: req.body.designation,
+      nommat: req.body.nommat,
+      quantité: req.body.quantité,
     };
     try {
-      res.send(await ajout("matériel", matérielDATA.id, matérielDATA));
+      res.send(await ajout("matériel", matérielDATA.num, matérielDATA));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);
@@ -29,12 +29,13 @@ module.exports = function (app) {
 
   app.put("/matériel", async (req, res) => {
     const matériel = {
-      id: req.body.id,
-
-      filiere: req.body.filiere,
+      num: req.body.num,
+      designation: req.body.designation,
+      nommat: req.body.nommat,
+      quantité: req.body.quantité,
     };
     try {
-      res.send(await mettre("matériel", matériel.id));
+      res.send(await mettre("matériel", matériel.num));
     } catch (err) {
       console.log(err.message);
       res.send(err.message);

@@ -5,9 +5,8 @@ module.exports = function (app) {
   app.post("/réponseE", async (req, res) => {
     const réponseEDATA = {
       id: req.body.id,
-
-      filiere: req.body.filiere,
-      dep: db.collection("réponseE").doc(req.body.dep),
+      commentaire: req.body.commentaire,
+      note: req.body.note,
     };
     try {
       res.send(await ajout("réponseE", réponseEDATA.id, réponseEDATA));
@@ -31,7 +30,8 @@ module.exports = function (app) {
     const réponseE = {
       id: req.body.id,
 
-      filiere: req.body.filiere,
+      commentaire: req.body.commentaire,
+      note: req.body.note,
     };
     try {
       res.send(await mettre("réponseE", réponseE.id));

@@ -1,6 +1,9 @@
-const firebase = require("firebase");
+const firebase = require("firebase/app").default;
 require("firebase/firestore");
 require("firebase/auth");
+var admin = require("firebase-admin");
+var serviceAccount = require("./sqeissatso-firebase-adminsdk-4izi1-359b82c2f3.json");
+
 const env = require("dotenv");
 env.config();
 const firebaseConfig = {
@@ -14,7 +17,13 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
 module.exports = {
+  admin: admin,
+  firebase: firebase,
   db: firebase.firestore(),
   auth: firebase.auth(),
 };

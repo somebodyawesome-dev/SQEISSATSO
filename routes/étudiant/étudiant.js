@@ -7,10 +7,11 @@ module.exports = function (app) {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
-      filiere: req.body.filiere,
-      dep: db.collection("étudiant").doc(req.body.dep),
+      adress: req.body.adress,
+      mdp: req.body.mdp,
     };
     try {
+      await ajout("utilisateur", utilisateurDATA.id, utilisateurDATA);
       res.send(await ajout("étudiant", étudiantDATA.id, étudiantDATA));
     } catch (err) {
       console.log(err.message);
@@ -33,7 +34,8 @@ module.exports = function (app) {
       id: req.body.id,
       nom: req.body.nom,
       prenom: req.body.prenom,
-      filiere: req.body.filiere,
+      adress: req.body.adress,
+      mdp: req.body.mdp,
     };
     try {
       res.send(await mettre("étudiant", étudiant.id));

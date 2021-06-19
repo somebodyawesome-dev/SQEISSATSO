@@ -1,0 +1,123 @@
+main {
+  min-height: 3500px;
+}
+
+@media (max-width: 576px) {
+  main {
+    min-height: 4000px;
+  }
+}
+
+* {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  max-width: 100vw;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.top-nav button {
+  border: 0;
+  margin-top: 10px;
+  border-radius: 0;
+  padding: 8px 12px;
+}
+
+.top-nav button:hover {
+  text-decoration: none;
+  background-color: rgba(199, 198, 198, 0.411) !important;
+  border: 0 !important;
+}
+
+.top-nav a:hover {
+  text-decoration: none;
+}
+
+.top-nav {
+  margin: 0 180px;
+  font-family: "Hammersmith One";
+  font-size: 16px;
+}
+
+.top-nav img {
+  padding: 3px 6px;
+}
+
+.top-nav a {
+  color: black;
+}
+
+.nav1 {
+  color: gray !important;
+  font-family: "Hammersmith One";
+  font-size: 16px;
+  margin: 0 180px;
+  border-top: 1px solid rgba(199, 198, 198, 0.411);
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.nav0 {
+  z-index: 10;
+  width: 100%;
+  border-bottom: solid 1px rgba(199, 198, 198, 0.411);
+  box-shadow: 0px 4px 10px 1px rgba(219, 218, 218, 0.274);
+}
+
+.nav1 a {
+  color: black;
+}
+
+.nav1 li {
+  padding: 3px 10px;
+}
+
+.nav1 li:hover {
+  background-color: rgba(199, 198, 198, 0.411) !important;
+}
+
+.dropdown-menu {
+  z-index: 5;
+}
+
+.nav1 .dropdown-menu {
+  padding-top: 0px;
+  border: 1 px rgba(199, 198, 198, 0.411);
+  border-top: 0;
+  border-radius: 0;
+  margin-left: 0;
+  background-color: white;
+  transform: translate(0px, 46px) !important;
+  overflow: hidden;
+}
+
+.nav1 .dropdown-menu a {
+  padding: 20px 25px;
+  color: gray;
+}
+
+@media only screen and (max-width: 1100px) {
+  .top-nav {
+    margin: 0;
+  }
+  .nav1 {
+    margin: 0 0;
+    border-top: 1px solid rgba(199, 198, 198, 0.411);
+  }
+  .nav1 .dropdown-menu {
+    border: 0;
+    width: 100%;
+  }
+  .dropdown-menu a {
+    padding-left: 30px;
+  }
+}
