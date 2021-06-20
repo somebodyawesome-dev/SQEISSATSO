@@ -1,5 +1,5 @@
 class Formulaire {
-  questions = [];
+  id = "";
   semestre = {};
   niveau = {};
   ouverte = true;

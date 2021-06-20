@@ -7,6 +7,7 @@ module.exports = function (app) {
   require("./etudiant")(app);
   require("./professeur")(app);
   require("./admin")(app);
+  require("./formulaire")(app);
 
   // require("./utilisateur/utilisateur")(app);
   // require("./departement/departement")(app);
