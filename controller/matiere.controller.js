@@ -14,7 +14,12 @@ const ajoutMatiere = async (req, res, next) => {
       niveau: admin.firestore().collection("niveau").doc(req.body.niveau),
       semestre: admin.firestore().collection("semestre").doc(req.body.semestre),
     };
-    res.status(200).send(await ajout("matiere", matiere.nomMatiere, matiere));
+    if (await matiereExist(nomMatiere)) {
+      res.status(500).send("matiere exist deja");
+      console.log("matiere exist deja");
+    } else {
+      res.status(200).send(await ajout("matiere", matiere.nomMatiere, matiere));
+    }
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
@@ -35,6 +40,9 @@ const getMatiere = async (req, res, next) => {
     console.log(error);
   }
 };
-
-module.exports.ajoutMatiere = ajoutMatiere;
+const matiereExist = async (id) => {
+  return (await admin.firestore().doc(`matiere/${id}`).get()).exist;
+};
+module.exports.module.exports.ajoutMatiere = ajoutMatiere;
 module.exports.getMatiere = getMatiere;
+module.exports.matiereExist = matiereExist;

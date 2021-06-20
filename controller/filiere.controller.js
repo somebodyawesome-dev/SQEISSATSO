@@ -9,13 +9,18 @@ const { ajout, obtenir } = require("./dao");
  */
 const ajoutFiliere = async (req, res, next) => {
   try {
-    const filiere = new Filiere(req.body);
-    res
-      .status(200)
-      .send(
-        await ajout("filiere", filiere.id, JSON.parse(JSON.stringify(filiere)))
-      );
-    next();
+    const filiere = {
+      id: req.body.id,
+      nom: req.body.nom,
+      dep: admin.firestore().doc(`department/${req.body.dep}`),
+      niveauMax: req.body.niveauMax,
+    };
+    if (await filiereExist(filiere.id)) {
+      console.log("filiere exist deja");
+      res.status(500).send("filiere exist deja");
+    } else {
+      res.status(200).send(await ajout("filiere", filiere.id, filiere));
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send(error);

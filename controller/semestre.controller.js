@@ -1,5 +1,6 @@
 const { admin } = require("../configs/firebase");
 const { ajout, obtenir } = require("./dao");
+const { formulaireExist } = require("./formulaire.controller");
 
 /**
  *
@@ -9,19 +10,18 @@ const { ajout, obtenir } = require("./dao");
  */
 const ajoutSemestre = async (req, res, next) => {
   try {
-    const semestre = {
-      semestre: req.body.semestre,
-      annee: req.body.annee,
-    };
-    res
-      .status(200)
-      .send(
-        await ajout(
-          "semestre",
-          semestre.annee + "-" + semestre.semestre,
-          semestre
-        )
-      );
+    const { semestre, annee } = req.body;
+
+    if (await formulaireExist(annee + "-" + semestre)) {
+      res.status(500).send("semestre exist deja");
+      console.log("semestre exist deja");
+    } else {
+      res
+        .status(200)
+        .send(
+          await ajout("semestre", annee + "-" + semestre, { semestre, annee })
+        );
+    }
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
@@ -42,6 +42,9 @@ const getSemestre = async (req, res, next) => {
     console.log(error);
   }
 };
-
+const semestreExist = async (id) => {
+  return (await admin.firestore().doc(`semestre/${id}`).get()).exist;
+};
 module.exports.ajoutSemestre = ajoutSemestre;
 module.exports.getSemestre = getSemestre;
+module.exports.semestreExist = semestreExist;
