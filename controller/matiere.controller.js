@@ -43,6 +43,6 @@ const getMatiere = async (req, res, next) => {
 const matiereExist = async (id) => {
   return (await admin.firestore().doc(`matiere/${id}`).get()).exist;
 };
-module.exports.module.exports.ajoutMatiere = ajoutMatiere;
+module.exports.ajoutMatiere = ajoutMatiere;
 module.exports.getMatiere = getMatiere;
 module.exports.matiereExist = matiereExist;
