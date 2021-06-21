@@ -23,6 +23,7 @@ const ajoutReponse = async (req, res, next) => {
       .firestore()
       .collection("reponse")
       .doc(req.body.formulaire + "-" + req.body.ecrirePar);
+    element.relatedTo;
     batch.set(admin.firestore().collection("commentaire").doc(), element);
   });
   batch.set(admin.firestore().collection("reponse").doc(reponse.id), reponse);
