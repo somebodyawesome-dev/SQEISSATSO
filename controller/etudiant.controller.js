@@ -1,5 +1,6 @@
 const { admin, db } = require("../configs/firebase");
 const { ajout, obtenir, supprimer } = require("./dao");
+const { randomPassword, mailer } = require("./nodemailer");
 
 /**
  *
@@ -8,23 +9,40 @@ const { ajout, obtenir, supprimer } = require("./dao");
  * @param {Function} next
  */
 const ajoutEtudiant = async (req, res, next) => {
-  const { cin, email, password, nom, prenom, inscri } = req.body;
-  const niveau = admin.firestore().collection("niveau").doc(req.body.niveau);
+  const { email } = req.body;
+
   try {
-    if (await etudiantExist(cin)) {
+    const niveau = admin.firestore().collection("niveau").doc(req.body.niveau);
+    if (await etudiantExist(email)) {
       res.status(500).send("Etudiant exist deja");
       console.log("Etudiant exist deja");
     } else {
-      await ajout("etudiant", cin, { cin, email, nom, prenom, inscri, niveau });
+      await ajout("etudiant", email, { email, niveau });
       try {
+        const password = randomPassword();
         await admin.auth().createUser({
           email: email,
           password: password,
-          uid: cin,
+          uid: email,
+        });
+        const mailOptions = {
+          from: "SQEISSATSO BOT",
+          to: email,
+          subject: "Welcome to SQEISSATSO !",
+          text: "Your password is :" + password,
+        };
+
+        mailer.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent: " + info.response);
+          }
         });
         res.status(200).send("etudiant est ajoute");
       } catch (error) {
-        res.status(500).send(await supprimer("etudiant", cin));
+        await supprimer("etudiant", email);
+        res.status(500).send(error);
       }
     }
   } catch (error) {
@@ -40,18 +58,18 @@ const ajoutEtudiant = async (req, res, next) => {
  */
 const getEtudiant = async (req, res, next) => {
   try {
-    const { cin } = req.body;
-    res.status(200).send(await obtenir("etudiant", cin));
+    const { email } = req.body;
+    res.status(200).send(await obtenir("etudiant", email));
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
   }
 };
-const etudiantExist = async (cin) => {
+const etudiantExist = async (email) => {
   return (
     await admin
       .firestore()
-      .doc("etudiant/" + cin)
+      .doc("etudiant/" + email)
       .get()
   ).exists;
 };

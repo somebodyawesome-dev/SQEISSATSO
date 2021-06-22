@@ -1,6 +1,6 @@
 const { admin, db } = require("../configs/firebase");
 const { ajout, obtenir, supprimer } = require("./dao");
-
+const { mailer, randomPassword } = require("./nodemailer");
 /**
  *
  * @param {import('express').Request} req
@@ -8,22 +8,38 @@ const { ajout, obtenir, supprimer } = require("./dao");
  * @param {Function} next
  */
 const ajoutProfesseur = async (req, res, next) => {
-  const { cin, email, password, nom, prenom, specialite } = req.body;
+  const { email } = req.body;
+  const password = randomPassword();
   try {
-    if (await professeurExist(cin)) {
+    if (await professeurExist(email)) {
       res.status(500).send("Professeur exist deja");
       console.log("Professeur exist deja");
     } else {
-      await ajout("professeur", cin, { cin, email, nom, prenom, specialite });
+      await ajout("professeur", email, { email });
       try {
         await admin.auth().createUser({
           email: email,
           password: password,
-          uid: cin,
+          uid: email,
         });
+        const mailOptions = {
+          from: "SQEISSATSO BOT",
+          to: email,
+          subject: "Welcome to SQEISSATSO !",
+          text: "Your password is :" + password,
+        };
+
+        mailer.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        });
+
         res.status(200).send("Professeur est ajoute");
       } catch (error) {
-        res.status(500).send(await supprimer("professeur", cin));
+        res.status(500).send(await supprimer("professeur", email));
       }
     }
   } catch (error) {
@@ -39,18 +55,18 @@ const ajoutProfesseur = async (req, res, next) => {
  */
 const getProfesseur = async (req, res, next) => {
   try {
-    const { cin } = req.body;
-    res.status(200).send(await obtenir("professeur", cin));
+    const { email } = req.body;
+    res.status(200).send(await obtenir("professeur", email));
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
   }
 };
-const professeurExist = async (cin) => {
+const professeurExist = async (email) => {
   return (
     await admin
       .firestore()
-      .doc("professeur/" + cin)
+      .doc("professeur/" + email)
       .get()
   ).exists;
 };

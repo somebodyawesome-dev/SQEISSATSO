@@ -12,7 +12,7 @@ const ajoutReponse = async (req, res, next) => {
   const reponse = {
     id: req.body.formulaire + "-" + req.body.ecrirePar,
     userType: req.body.userType,
-    ecrirePar: admin
+    ecritePar: admin
       .firestore()
       .doc(`${req.body.userType}/${req.body.ecrirePar}`),
     formulaire: admin.firestore().doc(`formulaire/${req.body.formulaire}`),

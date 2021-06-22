@@ -14,7 +14,7 @@ const ajoutMatiere = async (req, res, next) => {
       niveau: admin.firestore().collection("niveau").doc(req.body.niveau),
       semestre: admin.firestore().collection("semestre").doc(req.body.semestre),
     };
-    if (await matiereExist(nomMatiere)) {
+    if (await matiereExist(matiere.nomMatiere)) {
       res.status(500).send("matiere exist deja");
       console.log("matiere exist deja");
     } else {
