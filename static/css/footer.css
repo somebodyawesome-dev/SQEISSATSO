@@ -1,0 +1,39 @@
+.footer {
+  background-color: #fcfcfc;
+  padding: 5% 5%;
+  width: 100%;
+  border-top: 0.02px #5f90ba;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px -5px 10px #5f90ba;
+}
+.centre {
+  padding: 1% 1%;
+  width: 50%;
+}
+.debut {
+  padding: 1% 1%;
+  width: 25%;
+}
+.fin {
+  padding: 1% 1%;
+  width: 25%;
+}
+
+@media (max-width: 700px) {
+  .footer {
+    flex-direction: column;
+  }
+  .centre {
+    padding: 3% 1%;
+    width: 100%;
+  }
+  .debut {
+    padding: 3% 1%;
+    width: 100%;
+  }
+  .fin {
+    padding: 3% 1%;
+    width: 100%;
+  }
+}

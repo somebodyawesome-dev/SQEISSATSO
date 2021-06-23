@@ -1,0 +1,11 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+.formulaire-title {
+}
+.formulaire-container {
+}
+h2 {
+  margin: 0;
+}

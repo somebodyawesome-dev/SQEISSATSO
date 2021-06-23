@@ -5,10 +5,6 @@ const { isAdmin, isEtudiant, isProfesseur } = require("../auth/authorization");
  * @param {import('express').Application } app
  */
 module.exports = (app) => {
-  app.get("/login", async (req, res) => {
-    res.render("login.html");
-  });
-
   //login user
 
   app.post("/login", async function (req, res, next) {
@@ -34,6 +30,7 @@ module.exports = (app) => {
       await firebase.auth().signOut(); //clears session from memory
     } catch (error) {
       console.log(error);
+      res.status(500).send(error.message);
     }
   });
   //logout user

@@ -1,0 +1,36 @@
+.inscrire {
+  display: flex;
+  margin: 170px 50px;
+  height: 650px;
+  align-items: center;
+}
+.forminscrire {
+  width: 30%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.textinscrire {
+  width: 63%;
+  display: flex;
+  flex-direction: column;
+  font-size: 2em;
+}
+
+@media (max-width: 700px) {
+  .inscrire {
+    display: flex;
+    margin: 50px auto;
+    flex-direction: column;
+  }
+  .forminscrire {
+    display: flex;
+    flex-direction: column;
+  }
+  .textinscrire {
+    margin: 15px;
+    font-size: 30px;
+    width: 100%;
+    padding: 20px;
+  }
+}

@@ -19,9 +19,6 @@ app.use(cors());
 //   next();
 // });
 
-app.get("/", function (req, res) {
-  res.render("index.html");
-});
 require("./routes/routes")(app);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

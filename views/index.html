@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>login test</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/navBar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
     <script>
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -21,29 +26,95 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      console.log("firebase initialized");
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script defer src="./js/login.js"></script>
+    <script defer src="js/navBar.js"></script>
   </head>
   <body>
-    <div
-      style="
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 500px;
-      "
-      class="login-container"
-    >
-      <input type="email" id="emailInput" />
-      <input type="password" name="" id="passInput" />
-      <button id="login">login</button>
-      <button id="logout">log out</button>
-      <p>login idex</p>
+    <header>
+      <nav class="nav">
+        <img
+          src="img/issat.png"
+          alt=""
+          style="width: 120px; height: 60px; margin-left: 5%; margin-top: 10px"
+        />
+        <ul id="login-container"></ul>
+      </nav>
+    </header>
+    <div class="container">
+      <section class="section child">
+        <div class="section-suivit_qualite">
+          <img
+            src="img/issat.png"
+            alt=""
+            style="width: 550px; height: 280px; margin-top: 10px"
+          />
+          <h1
+            style="
+              text-align: center;
+              font-size: 50px;
+              margin: 40px;
+              text-shadow: rgba(109, 106, 106, 0.63);
+              font-family: Arial, Helvetica, sans-serif;
+            "
+          >
+            Suivi notre qualité d'enseignement
+          </h1>
+        </div>
+      </section>
+
+      <section class="section-departement child">
+        <div class="departimg">
+          <h1 style="margin: 50px 7px; font-size: 45px">
+            Découvrir nos departements
+          </h1>
+          <div class="departimg1">
+            <img src="img/1.jpg" alt="" />
+            <img src="img/2.jpg" alt="" />
+            <img src="img/4.jpg" alt="" />
+            <img src="img/3.jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="depart-btn">
+          <div class="buttons">
+            <button class="btn">Description</button>
+            <button class="btn">Filiére et spécialité</button>
+          </div>
+
+          <div style="margin: 20px 5px; text-align: center; margin-top: 50px">
+            <h3>
+              Pour avoir la posssibilité de commenter et noter la formation
+              <br />
+              de notre institut il faut s'inscrire
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <section class="child" style="background-color: #ffffff">
+        <footer class="footer">
+          <div class="debut">
+            <h2>Lien utils</h2>
+            <ul style="list-style-type: none">
+              <li>Accueil</li>
+              <li>Nos departements</li>
+              <li>Inscrire</li>
+              <li>Se connecter</li>
+            </ul>
+          </div>
+          <div class="centre">
+            <h2>CONTACTEZ NOUS</h2>
+            <ul style="list-style-type: none">
+              <li>+2167554884</li>
+              <li>+2163554788</li>
+            </ul>
+          </div>
+          <div class="fin">
+            <h2>OU nous sommes ?</h2>
+          </div>
+        </footer>
+      </section>
     </div>
   </body>
 </html>
+l

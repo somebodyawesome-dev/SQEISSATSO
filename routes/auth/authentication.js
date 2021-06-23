@@ -26,8 +26,8 @@ export const getAuthToken = getAuthToken;
  * @param {*} next
  */
 export const checkIfAuthenticated = (req, res, next) => {
-  const { authToken } = req;
   getAuthToken(req, res, async () => {
+    const { authToken } = req;
     const decodedIdToken = await admin.auth().verifyIdToken(authToken);
     req.authId = decodedIdToken.uid;
   });
