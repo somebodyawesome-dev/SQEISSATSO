@@ -1,7 +1,7 @@
 .nav {
   display: sticky;
   top: 0;
-  height: 70px;
+  height: 80px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   background-color: rgb(252, 252, 252);
@@ -9,15 +9,14 @@
   box-shadow: 4px 6px 25px #5f90ba;
 }
 header ul {
-  margin: 10px 5%;
   list-style-type: none;
   float: right;
   display: inline-block;
   display: inline-flex;
 }
 header ul li {
-  margin: 15px 5px;
   padding: 10px 12px;
+  margin-right: 1vw;
   font: solid 20px rgb(95, 143, 186) verdana;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: larger;
