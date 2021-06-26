@@ -50,6 +50,7 @@ const filiereExist = async (id) => {
     throw new Error(" can't get " + id + " for this reasons: " + error);
   }
 };
+
 module.exports.ajoutFiliere = ajoutFiliere;
 module.exports.getFiliere = getFiliere;
 module.exports.filiereExist = filiereExist;

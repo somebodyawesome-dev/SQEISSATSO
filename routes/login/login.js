@@ -20,11 +20,12 @@ module.exports = (app) => {
         .auth()
         .signInWithEmailAndPassword(req.body.email, req.body.password);
       const { uid } = userCred.user;
-      const token = await admin.auth().createCustomToken(uid, {
+      const claims = {
         admin: await isAdmin(uid),
         etudiant: await isEtudiant(uid),
         professeur: await isProfesseur(uid),
-      });
+      };
+      const token = await admin.auth().createCustomToken(uid, claims);
 
       res.status(200).send({ idToken: token });
       await firebase.auth().signOut(); //clears session from memory

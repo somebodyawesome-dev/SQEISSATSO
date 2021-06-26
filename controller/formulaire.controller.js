@@ -11,6 +11,7 @@ const ajoutFormulaire = async (req, res, next) => {
   const formulaireId = req.body.semestre + "-" + req.body.niveau;
   const niveau = admin.firestore().doc(`niveau/${req.body.niveau}`);
   const semestre = admin.firestore().doc(`semestre/${req.body.semestre}`);
+
   try {
     if (!(await formulaireExist(formulaireId))) {
       res.status(200).send(
@@ -18,6 +19,7 @@ const ajoutFormulaire = async (req, res, next) => {
           formulaireId,
           niveau,
           semestre,
+          ouvert: true,
         })
       );
     } else {
@@ -51,6 +53,36 @@ const formulaireExist = async (id) => {
       .get()
   ).exists;
 };
+/**
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {Function} next
+ */
+const getForumulaireByNiveau = async (req, res, next) => {
+  var formulaires = [];
+  try {
+    const querySnapShot = await admin
+      .firestore()
+      .collection("formulaire")
+      .where("ouvert", "==", true)
+      .where("niveau", "in", req.niveau)
+      .get();
+    querySnapShot.forEach((formulaire) => {
+      const data = formulaire.data();
+      formulaires.push({
+        formulaireId: data.formulaireId,
+        niveau: data.niveau.id,
+        semestre: data.semestre.id,
+      });
+    });
+    res.status(200).json({ formulaires });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
 module.exports.ajoutFormulaire = ajoutFormulaire;
 module.exports.getFormulaire = getFormulaire;
 module.exports.formulaireExist = formulaireExist;
+module.exports.getForumulaireByNiveau = getForumulaireByNiveau;

@@ -2,7 +2,7 @@ class Formulaire {
   id = "";
   semestre = {};
   niveau = {};
-  ouverte = true;
+  ouvert = true;
   constructor(data) {
     Object.assign(this, data);
   }

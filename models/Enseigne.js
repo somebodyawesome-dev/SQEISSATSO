@@ -1,6 +1,6 @@
 class Enseigne {
   id = "";
-  enseignant = {};
+  professeur = {};
   niveau = {};
 
   constructor(data) {

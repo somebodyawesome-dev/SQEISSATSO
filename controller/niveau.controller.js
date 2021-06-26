@@ -36,5 +36,36 @@ const getNiveau = async (req, res, next) => {
   }
 };
 
+/**
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {Function} next
+ */
+const getNiveauByUser = async (req, res, next) => {
+  req.niveau = [];
+  if (req.etudiant) {
+    const snapShot = await admin
+      .firestore()
+      .doc(`etudiant/${req.authId}`)
+      .get();
+    const data = snapShot.data();
+    req.niveau.push(data.niveau);
+  }
+  if (req.professeur) {
+    const profRef = admin.firestore().doc(`professeur/${req.authId}`);
+    const querySnapShot = await admin
+      .firestore()
+      .collection("enseigne")
+      .where("professeur", "==", profRef)
+      .get();
+    querySnapShot.forEach((ens) => {
+      req.niveau.push(ens.data().niveau);
+    });
+  }
+  next();
+};
+
 module.exports.ajoutNiveau = ajoutNiveau;
 module.exports.getNiveau = getNiveau;
+module.exports.getNiveauByUser = getNiveauByUser;

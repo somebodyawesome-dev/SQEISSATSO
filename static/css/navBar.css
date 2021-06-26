@@ -1,5 +1,6 @@
 .nav {
-  display: sticky;
+  display: flex;
+  justify-content: space-between;
   top: 0;
   height: 80px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -10,9 +11,10 @@
 }
 header ul {
   list-style-type: none;
-  float: right;
-  display: inline-block;
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  align-items: center;
 }
 header ul li {
   padding: 10px 12px;
@@ -21,9 +23,9 @@ header ul li {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: larger;
   font-weight: bolder;
+  cursor: pointer;
 }
 header ul li:hover {
-  cursor: pointer;
   background-color: rgb(95, 144, 186, 0.3);
 }
 a {

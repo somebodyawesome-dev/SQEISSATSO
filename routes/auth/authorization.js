@@ -5,7 +5,7 @@ const isAdmin = async (uid) => {
     const snapShot = await admin
       .firestore()
       .collection("admin")
-      .where("uid", "==", uid)
+      .where("email", "==", uid)
       .get();
     return !snapShot.empty;
   } catch (error) {
@@ -18,7 +18,7 @@ const isEtudiant = async (uid) => {
     const snapShot = await admin
       .firestore()
       .collection("etudiant")
-      .where("uid", "==", uid)
+      .where("email", "==", uid)
       .get();
     return !snapShot.empty;
   } catch (error) {
@@ -31,7 +31,7 @@ const isProfesseur = async (uid) => {
     const snapShot = await admin
       .firestore()
       .collection("professeur")
-      .where("uid", "==", uid)
+      .where("email", "==", uid)
       .get();
     return !snapShot.empty;
   } catch (error) {
@@ -39,6 +39,62 @@ const isProfesseur = async (uid) => {
     return false;
   }
 };
+/**
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {Function} next
+ */
+const checkIfEtudiant = async (req, res, next) => {
+  if (req.etudiant) {
+    next();
+  } else {
+    res.status(500).send("UNAUTHORIZED");
+  }
+};
+/**
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {Function} next
+ */
+const checkIfProfesseur = async (req, res, next) => {
+  if (req.professeur) {
+    next();
+  } else {
+    res.status(500).send("UNAUTHORIZED");
+  }
+};
+/**
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {Function} next
+ */
+const checkIfAdmin = async (req, res, next) => {
+  if (req.admin) {
+    next();
+  } else {
+    res.status(500).send("UNAUTHORIZED");
+  }
+};
+/**
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {Function} next
+ */
+const checkIfProfesseurOrEtudiant = async (req, res, next) => {
+  if (req.etudiant || req.professeur) {
+    next();
+  } else {
+    res.status(500).send("UNAUTHORIZED");
+  }
+};
 module.exports.isAdmin = isAdmin;
 module.exports.isEtudiant = isEtudiant;
 module.exports.isProfesseur = isProfesseur;
+module.exports.checkIfEtudiant = checkIfEtudiant;
+module.exports.checkIfProfesseur = checkIfProfesseur;
+module.exports.checkIfAdmin = checkIfAdmin;
+module.exports.checkIfProfesseurOrEtudiant = checkIfProfesseurOrEtudiant;

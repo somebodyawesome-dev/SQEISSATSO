@@ -8,8 +8,8 @@ const { ajout, obtenir } = require("./dao");
  */
 const ajoutEnseigne = async (req, res, next) => {
   const enseigne = {
-    id: req.body.niveau + "-" + req.body.enseignant,
-    enseignant: admin.firestore().doc(`professeur/${req.body.enseignant}`),
+    id: req.body.niveau + "-" + req.body.professeur,
+    professeur: admin.firestore().doc(`professeur/${req.body.professeur}`),
     niveau: admin.firestore().doc(`niveau/${req.body.niveau}`),
   };
   try {

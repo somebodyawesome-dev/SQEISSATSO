@@ -1,4 +1,5 @@
 const { admin, firebase, auth } = require("../../configs/firebase");
+const { isEtudiant } = require("./authorization");
 
 /**
  *
@@ -18,17 +19,31 @@ const getAuthToken = (req, res, next) => {
   next();
 };
 
-export const getAuthToken = getAuthToken;
 /**
  *
  * @param {import('express').Request} req
  * @param {import('express').Response} res
  * @param {*} next
  */
-export const checkIfAuthenticated = (req, res, next) => {
+const checkIfAuthenticated = async (req, res, next) => {
   getAuthToken(req, res, async () => {
-    const { authToken } = req;
-    const decodedIdToken = await admin.auth().verifyIdToken(authToken);
-    req.authId = decodedIdToken.uid;
+    try {
+      const { authToken } = req;
+      if (authToken != null) {
+        const decodedIdToken = await admin.auth().verifyIdToken(authToken);
+
+        req.authId = decodedIdToken.uid;
+        req.admin = decodedIdToken.admin;
+        req.etudiant = decodedIdToken.etudiant;
+        req.professeur = decodedIdToken.professeur;
+        next();
+      } else {
+        res.status(500).send("UNAUTHINTICATED");
+      }
+    } catch (error) {
+      res.status(500).send("UNAUTHINTICATED");
+    }
   });
 };
+module.exports.getAuthToken = getAuthToken;
+module.exports.checkIfAuthenticated = checkIfAuthenticated;
