@@ -17,4 +17,7 @@ module.exports = (app) => {
   app.get("/remplirFormulaire", function (req, res) {
     res.render("formulaire.html");
   });
+  app.get("/test", function (req, res) {
+    res.render("index copy.html", { data: "wiow" });
+  });
 };

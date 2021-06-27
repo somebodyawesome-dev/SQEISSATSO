@@ -5,7 +5,6 @@
 }
 body {
   height: 100vh;
-  overflow: hidden;
 }
 body .container {
   width: 100%;

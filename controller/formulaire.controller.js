@@ -23,7 +23,7 @@ const ajoutFormulaire = async (req, res, next) => {
         })
       );
     } else {
-      res.status(500).send("formulaire exist deja");
+      res.status(500).send("formulaire existe deja");
     }
   } catch (error) {
     res.status(500).send(error);

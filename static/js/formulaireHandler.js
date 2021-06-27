@@ -1,5 +1,11 @@
 var user = {};
 const formulaireContainer = document.getElementById("formulaire-container");
+const form = document.getElementById("form");
+
+const showForm = (e) => {
+  form.style.display = "block";
+  formulaireContainer.style.display = "none";
+};
 firebase.auth().onIdTokenChanged(async (userCred) => {
   if (userCred) {
     user = userCred;
@@ -15,16 +21,15 @@ firebase.auth().onIdTokenChanged(async (userCred) => {
     if (reponse.ok) {
       const { formulaires } = await reponse.json();
       formulaires.forEach((element) => {
-        console.log(element.niveau);
         formulaireContainer.innerHTML += `<div class="formulaire">
-        <a href="" class="animated-button thar-three" id="${element.formulaireId}">
+        <a href="#" class="animated-button thar-three" onclick="showForm()" id="${element.formulaireId}">
           <div><h2>${element.niveau}</h2></div>
           <div><h2>${element.semestre}</h2></div>
         </a>
         </div>`;
       });
     } else {
-      console.log(await reponse.text());
+      alert(await reponse.text());
     }
   } else {
     console.log("logged out");

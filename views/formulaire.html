@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/navBar.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/formulaire.css" />
+    <link rel="stylesheet" href="css/forumStyle.css" />
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
@@ -48,5 +49,83 @@
       </div>
       <div class="formulaire-container" id="formulaire-container"></div>
     </div>
+    <form class="form" id="form">
+      <br />
+      <br />
+      <h2 class="textstyle">Filière</h2>
+      <br />
+      <h3>Licence Fondamentale en Science Informatique LF-SI-03</h3>
+      <br />
+      <label for="filiere"><h4>Noter et commenter votre filière</h4></label
+      ><br />
+      <div class="radio-container">
+        <input type="radio" id="if" name="note" value="note" />
+        <label class="taille" for="notef">insuffisant</label>
+        <input type="radio" id="abf" name="note" value="note" />
+        <label class="taille" for="notef">assez bien</label>
+        <input type="radio" id="bf" name="note" value="note" />
+        <label class="taille" for="notef">bien</label>
+        <input type="radio" id="tbf" name="note" value="note" />
+        <label class="taille" for="notef">très bien</label>
+        <input type="radio" id="exf" name="note" value="note" />
+        <label class="taille" for="notef">excellent</label><br /><br />
+      </div>
+      <textarea id="comment" name="user_comment"></textarea><br /><br />
+
+      <h2 class="textstyle">Matières</h2>
+      <br />
+      <label for="matiere"><h4>Base de données</h4></label><br />
+      <div class="radio-container">
+        <input type="radio" id="i" name="note" value="note" />
+        <label class="taille" for="note">insuffisant</label>
+        <input type="radio" id="ab" name="note" value="note" />
+        <label class="taille" for="note">assez bien</label>
+        <input type="radio" id="b" name="note" value="note" />
+        <label class="taille" for="note">bien</label>
+        <input type="radio" id="tb" name="note" value="note" />
+        <label class="taille" for="note">très bien</label>
+        <input type="radio" id="ex" name="note" value="note" />
+        <label class="taille" for="note">excellent</label><br /><br />
+      </div>
+      <textarea id="comment" name="user_comment"></textarea><br /><br />
+
+      <label for="matiere"><h4>Base de données</h4></label><br />
+      <div class="radio-container">
+        <input type="radio" id="i1" name="note1" value="note" />
+        <label class="taille" for="note1">insuffisant</label>
+        <input type="radio" id="ab1" name="note1" value="note" />
+        <label class="taille" for="note1">assez bien</label>
+        <input type="radio" id="b1" name="note1" value="note" />
+        <label class="taille" for="note1">bien</label>
+        <input type="radio" id="tb1" name="note1" value="note" />
+        <label class="taille" for="note1">très bien</label>
+        <input type="radio" id="ex1" name="note1" value="note" />
+        <label class="taille" for="note1">excellent</label><br /><br />
+      </div>
+      <textarea id="comment" name="user_comment"></textarea><br /><br />
+
+      <label for="matiere"><h4>Base de données</h4></label><br />
+      <div class="radio-container">
+        <input type="radio" id="i2" name="note2" value="note" />
+        <label class="taille" for="note2">insuffisant</label>
+        <input type="radio" id="ab2" name="note2" value="note" />
+        <label class="taille" for="note2">assez bien</label>
+        <input type="radio" id="b2" name="note2" value="note" />
+        <label class="taille" for="note2">bien</label>
+        <input type="radio" id="tb2" name="note2" value="note" />
+        <label class="taille" for="note2">très bien</label>
+        <input type="radio" id="ex2" name="note" value="note" />
+        <label class="taille" for="note2">excellent</label><br /><br />
+      </div>
+      <textarea id="comment" name="user_comment"></textarea><br /><br />
+
+      <h2 class="textstyle">Autres</h2>
+      <br />
+      <textarea id="comment" name="user_comment"></textarea>
+
+      <div class="button">
+        <button type="submit">Envoyer</button>
+      </div>
+    </form>
   </body>
 </html>
