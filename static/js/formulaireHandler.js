@@ -3,8 +3,13 @@ const formulaireContainer = document.getElementById("formulaire-container");
 const form = document.getElementById("form");
 
 const showForm = (e) => {
+  //TODO:update form UI
   form.style.display = "block";
   formulaireContainer.style.display = "none";
+};
+const hideForm = (e) => {
+  form.style.display = "none";
+  formulaireContainer.style.display = "block";
 };
 firebase.auth().onIdTokenChanged(async (userCred) => {
   if (userCred) {

@@ -1,5 +1,4 @@
 const { admin } = require("../configs/firebase");
-const { Filiere } = require("../models/Filiere/Filiere");
 const { ajout, obtenir } = require("./dao");
 /**
  *

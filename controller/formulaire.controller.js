@@ -68,7 +68,7 @@ const getForumulaireByNiveau = async (req, res, next) => {
       .where("ouvert", "==", true)
       .where("niveau", "in", req.niveau)
       .get();
-    querySnapShot.forEach((formulaire) => {
+    querySnapShot.forEach(async (formulaire) => {
       const data = formulaire.data();
       formulaires.push({
         formulaireId: data.formulaireId,
