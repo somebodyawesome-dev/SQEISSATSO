@@ -69,14 +69,10 @@ const getForumulaireByNiveau = async (req, res, next) => {
       .where("niveau", "in", req.niveau)
       .get();
     querySnapShot.forEach(async (formulaire) => {
-      const data = formulaire.data();
-      formulaires.push({
-        formulaireId: data.formulaireId,
-        niveau: data.niveau.id,
-        semestre: data.semestre.id,
-      });
+      formulaires.push(formulaire.ref);
     });
-    res.status(200).json({ formulaires });
+    req.formulaires = formulaires;
+    next();
   } catch (error) {
     console.log(error);
     res.status(500).send(error);

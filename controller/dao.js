@@ -72,6 +72,8 @@ async function ajoutAvecCleAleatoire(collection, data) {
     throw new Error(err);
   }
 }
+
+async function RefArrayToDataArray(arr) {}
 module.exports = {
   ajout: ajout,
   mettre: mettre,
