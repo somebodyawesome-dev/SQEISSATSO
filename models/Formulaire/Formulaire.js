@@ -1,5 +1,5 @@
 class Formulaire {
-  id = "";
+  formulaireId = "";
   semestre = {};
   niveau = {};
   ouvert = true;
@@ -10,7 +10,7 @@ class Formulaire {
 const formulaireConverter = {
   toFirestore(formulaire) {
     return {
-      id: formulaire.id,
+      formulaireId: formulaire.formulaireId,
       niveau: admin.firestore().doc(`niveau/${formulaire.niveau}`),
       semestre: admin.firestore().doc(`semestre/${formulaire.semestre}`),
       ouvert: true,
