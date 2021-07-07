@@ -19,11 +19,14 @@ const ajoutReponse = async (req, res, next) => {
   };
   const batch = admin.firestore().batch();
   req.body.commentaires.forEach((element) => {
+    //prepare each comment to  be added to the data base
     element.reponse = admin
       .firestore()
       .collection("reponse")
       .doc(req.body.formulaire + "-" + req.body.ecrirePar);
-    element.relatedTo;
+    element.relatedTo = admin
+      .firestore()
+      .doc(`${element.sujet}/${element.relatedTo}`);
     batch.set(admin.firestore().collection("commentaire").doc(), element);
   });
   batch.set(admin.firestore().collection("reponse").doc(reponse.id), reponse);

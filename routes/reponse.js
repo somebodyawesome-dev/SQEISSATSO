@@ -2,6 +2,8 @@ const {
   ajoutReponse,
   getReponse,
 } = require("../controller/reponse.controller");
+const { checkIfAuthenticated } = require("./auth/authentication");
+const { checkIfProfesseurOrEtudiant } = require("./auth/authorization");
 
 /**
  *
@@ -9,6 +11,11 @@ const {
  */
 
 module.exports = (app) => {
-  app.post("/reponse", ajoutReponse);
+  app.post(
+    "/reponse",
+    checkIfAuthenticated,
+    checkIfProfesseurOrEtudiant,
+    ajoutReponse
+  );
   app.get("/reponse", getReponse);
 };
