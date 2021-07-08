@@ -205,9 +205,9 @@ sumbitFormulaire.onclick = async (e) => {
       }),
     });
     if (reponse.ok) {
-      console.log("ok");
+      alert("your comment have been sumbited succesfuly");
     } else {
-      console.log(await reponse.text());
+      alert(await reponse.text());
     }
   } catch (error) {
     console.log(error);
