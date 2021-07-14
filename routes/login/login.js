@@ -28,7 +28,6 @@ module.exports = (app) => {
         professeur: await isProfesseur(uid),
       };
       const token = await admin.auth().createCustomToken(uid, claims);
-
       res.status(200).send({ idToken: token });
     } catch (error) {
       console.log(error);
