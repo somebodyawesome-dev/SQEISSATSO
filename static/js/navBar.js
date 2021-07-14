@@ -5,7 +5,7 @@ firebase.auth().onIdTokenChanged(function (user) {
     <div class="dropdown">
       <span>Menu</span>
       <div class="dropdown-content">
-        <a href="/remlirFormulaire">Remplir formulaire</a>
+        <a href="/remplirFormulaire">Remplir formulaire</a>
         <a onclick="firebase.auth().signOut()" href="">Deconnexion</a>
       </div>
     </div>
