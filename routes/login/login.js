@@ -29,13 +29,6 @@ module.exports = (app) => {
       };
       const token = await admin.auth().createCustomToken(uid, claims);
 
-      res.cookie(
-        "AuthToken",
-        await (
-          await firebase.auth().signInWithCustomToken(token)
-        ).user.getIdToken()
-      );
-      await firebase.auth().signOut();
       res.status(200).send({ idToken: token });
     } catch (error) {
       console.log(error);
