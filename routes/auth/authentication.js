@@ -28,7 +28,9 @@ const getAuthToken = (req, res, next) => {
 const checkIfAuthenticated = async (req, res, next) => {
   getAuthToken(req, res, async () => {
     try {
-      const { authToken } = req;
+      let authToken =
+        req.authToken !== null ? req.authToken : req.cookies["AuthToken"];
+
       if (authToken != null) {
         const decodedIdToken = await admin.auth().verifyIdToken(authToken);
 
@@ -36,11 +38,13 @@ const checkIfAuthenticated = async (req, res, next) => {
         req.admin = decodedIdToken.admin;
         req.etudiant = decodedIdToken.etudiant;
         req.professeur = decodedIdToken.professeur;
+
         next();
       } else {
         res.status(500).send("UNAUTHINTICATED");
       }
     } catch (error) {
+      console.log(error);
       res.status(500).send("UNAUTHINTICATED");
     }
   });
