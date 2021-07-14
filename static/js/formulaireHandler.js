@@ -4,7 +4,6 @@ var matieres = {};
 var niveau = {};
 const formulaireContainer = document.getElementById("formulaire-container");
 const form = document.getElementById("form");
-
 const showForm = (formulaireIndex) => {
   //TODO:update form UI
   setForm(formulaireIndex);

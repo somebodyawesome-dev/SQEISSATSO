@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/navBar.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/formulaire.css" />
+    <link rel="stylesheet" href="css/gerer.css" />
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyAFsGCtYwxh6HAztiEqRNTM2uP3COOHjs8",
+        authDomain: "sqeissatso.firebaseapp.com",
+        projectId: "sqeissatso",
+        storageBucket: "sqeissatso.appspot.com",
+        messagingSenderId: "85998445266",
+        appId: "1:85998445266:web:0b70b9e55d4bb9a0ce030b",
+        measurementId: "G-T6CY1M9NFJ",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script defer src="js/navBar.js"></script>
+    <script defer src="js/listeFormulaireHandler.js"></script>
+    <script defer src="js/listeReponseHandler.js"></script>
+
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <img
+          src="img/issat.png"
+          alt=""
+          style="width: 120px; height: 60px; margin-left: 5%; margin-top: 10px"
+        />
+        <ul id="login-container"></ul>
+      </nav>
+    </header>
+    <div class="bo">
+      <!-- sidenav -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+
+        <img
+          src="img/issat.png"
+          alt=""
+          style="width: 120px; height: 60px; margin-left: 5%; margin-top: 10px"
+        />
+        <a href="#" onclick="UIcontroller(0)">Acceuil</a>
+        <a href="#" onclick="UIcontroller(1)">Formulaires</a>
+        <a href="#" onclick="UIcontroller(2)">Réponses</a>
+      </div>
+      <!--  -->
+      <div class="main-page">
+        <!-- acceuil -->
+        <div class="main acceuil page">
+          <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
+            >&#9776;
+          </span>
+
+          <script>
+            function openNav() {
+              document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+              document.getElementById("mySidenav").style.width = "0";
+            }
+          </script>
+          <div>
+            <div class="cadre">
+              <div class="joli">
+                <p>1200</p>
+                <p>utilisateur total</p>
+              </div>
+
+              <div class="joli">
+                <p>12</p>
+                <p>formulaires remplies</p>
+              </div>
+            </div>
+          </div>
+          <div class="bouton">
+            <input
+              type="image"
+              src="img/plus.png"
+              alt="Submit"
+              width="48"
+              height="48"
+            />
+            <h4>Charger les nouveaux données</h4>
+          </div>
+        </div>
+        <!--  -->
+        <!-- for,ulqire contqiner -->
+        <div class="main-container page">
+          <div class="formulaire-title">
+            <div><h2>Liste de formulaires</h2></div>
+            <div></div>
+          </div>
+          <div class="formulaire-container" id="liste-container"></div>
+          <div class="bouton">
+            <input
+              type="image"
+              src="img/plus.png"
+              alt="Submit"
+              width="48"
+              height="48"
+            />
+            <h4>Ajouter une nouvelle formulaire</h4>
+          </div>
+        </div>
+        <!--  -->
+  <!--liste reponse-->
+  <div class="main-container page">
+    <div class="formulaire-title">
+      <div><h2>Liste de réponses</h2></div>
+      <div></div>
+    </div>
+    <div class="formulaire-container" id="listeR-container"></div>
+</div>
+<!---->
+        <div class="page">
+          <form>
+            <div>
+              <label for="id">formulaireId:</label>
+              <input type="text" id="id" name="id" />
+              <label for="niveau">niveau:</label>
+              <input type="text" id="niveau" name="niveau" />
+              <label for="ouvert">ouvert:</label>
+              <input type="text" id="ouvert" name="ouvert" />
+              <label for="semestre">semestre:</label>
+              <input type="text" id="semestre" name="semestre" />
+            </div>
+            <div class="bouton1">
+              <input type="submit" value="abondonner" id="submit" />
+
+              <input type="submit" value="enregistrer" id="submit" />
+
+              <input type="submit" value="supprimer" id="submit" />
+            </div>
+          </form>
+        </div>
+        <!--liste reponse-->
+        <div class="main-container page">
+          <div class="formulaire-title">
+            <div><h2>Liste de réponses</h2></div>
+            <div></div>
+          </div>
+          <div class="formulaire-container" id="listeR-container"></div>
+      </div>
+      <!---->
+    </div>
+  </body>
+</html>

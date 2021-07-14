@@ -78,7 +78,7 @@ a {
 
 @media (max-width: 700px) {
   .buttons {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .section-departement {
@@ -127,6 +127,7 @@ a {
   justify-content: space-between;
   list-style-type: none;
   background-color: #5f90ba;
+  z-index: 10;
 }
 .navbar li {
   padding: 10px 30px;
