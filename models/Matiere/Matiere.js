@@ -1,14 +1,15 @@
 const { admin } = require("../../configs/firebase");
 
 class Matiere {
-  nomMatiere = "";
-  niveau = {};
-  semestre = {};
-  tp = false;
   constructor(data) {
+    this.nomMatiere = "";
+    this.niveau = {};
+    this.semestre = {};
+    this.tp = false;
     Object.assign(this, data);
   }
 }
+
 module.exports.Matiere = Matiere;
 const matiereConverter = {
   toFirestore(matiere) {

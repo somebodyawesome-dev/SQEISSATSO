@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/navBar.css" />
-    <link rel="stylesheet" href="css/test.css" />
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
@@ -27,7 +26,7 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
-    <script defer src="js/navBar.js"></script>
+    <!-- <script defer src="js/navBar.js"></script> -->
   </head>
   <body>
     <header>
@@ -37,7 +36,19 @@
           alt=""
           style="width: 120px; height: 60px; margin-left: 5%; margin-top: 10px"
         />
-        <ul id="login-container"></ul>
+        <ul id="login-container">
+          <li>
+            <div class="dropdown">
+              <span>Mouse over me</span>
+              <div class="dropdown-content">
+                <a onclick="firebase.auth().signOut()" href="">Deconnexion</a>
+                <a onclick="firebase.auth().signOut()" href="">Deconnexion</a>
+                <a onclick="firebase.auth().signOut()" href="">Deconnexion</a>
+                <a onclick="firebase.auth().signOut()" href="">Deconnexion</a>
+              </div>
+            </div>
+          </li>
+        </ul>
       </nav>
     </header>
   </body>

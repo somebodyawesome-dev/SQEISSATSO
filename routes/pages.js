@@ -1,4 +1,9 @@
-const { isEtudiant } = require("./auth/authorization");
+const { checkIfAuthenticated } = require("./auth/authentication");
+const {
+  isEtudiant,
+  checkIfProfesseurOrEtudiant,
+  checkIfAdmin,
+} = require("./auth/authorization");
 
 /**
  *
@@ -14,10 +19,27 @@ module.exports = (app) => {
   app.get("/signin", function (req, res) {
     res.render("signin.html");
   });
-  app.get("/remplirFormulaire", function (req, res) {
-    res.render("formulaire.html");
-  });
+  app.get(
+    "/remplirFormulaire",
+    checkIfAuthenticated,
+    checkIfProfesseurOrEtudiant,
+    function (req, res) {
+      res.render("formulaire.html");
+    }
+  );
   app.get("/test", function (req, res) {
     res.render("index copy.html", { data: "wiow" });
+  });
+  app.get("/admin", checkIfAuthenticated, checkIfAdmin, function (req, res) {
+    res.render("admin.html");
+  });
+  app.get("/utilisateur", function (req, res) {
+    res.render("utilisateur.html");
+  });
+  app.get("/listeF", function (req, res) {
+    res.render("listeFormulaire.html");
+  });
+  app.get("/gererform", function (req, res) {
+    res.render("gererform.html");
   });
 };

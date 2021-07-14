@@ -1,11 +1,11 @@
 const { admin } = require("../../configs/firebase");
 
 class Niveau {
-  id = "";
-  filiere = {};
-  niveau = 0;
-
   constructor(data) {
+    this.id = "";
+    this.filiere = {};
+    this.niveau = 0;
+
     Object.assign(this, data);
   }
 }

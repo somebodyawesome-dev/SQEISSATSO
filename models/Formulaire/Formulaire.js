@@ -1,9 +1,9 @@
 class Formulaire {
-  formulaireId = "";
-  semestre = {};
-  niveau = {};
-  ouvert = true;
   constructor(data) {
+    this.formulaireId = "";
+    this.semestre = {};
+    this.niveau = {};
+    this.ouvert = true;
     Object.assign(this, data);
   }
 }
