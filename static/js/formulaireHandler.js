@@ -83,6 +83,12 @@ const setForm = (formulaireIndex) => {
 firebase.auth().onIdTokenChanged(async (userCred) => {
   if (userCred) {
     user = userCred;
+    const idTokenResult = await userCred.getIdTokenResult();
+    if (!idTokenResult.claims.etudiant && !idTokenResult.claims.professeur) {
+      alert("UNAUTHORIZED");
+      console.log("UNAUTHORIZED");
+      window.location.pathname = "/";
+    }
     const reponse = await fetch("/formulaireValable", {
       method: "GET",
       headers: {
@@ -109,7 +115,9 @@ firebase.auth().onIdTokenChanged(async (userCred) => {
       alert(await reponse.text());
     }
   } else {
-    console.log("logged out");
+    alert("UNAUTHINTICATED");
+    console.log("UNAUTHINTICATED");
+    window.location.pathname = "/signin";
   }
 });
 

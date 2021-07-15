@@ -19,18 +19,13 @@ module.exports = (app) => {
   app.get("/signin", function (req, res) {
     res.render("signin.html");
   });
-  app.get(
-    "/remplirFormulaire",
-    checkIfAuthenticated,
-    checkIfProfesseurOrEtudiant,
-    function (req, res) {
-      res.render("formulaire.html");
-    }
-  );
+  app.get("/remplirFormulaire", function (req, res) {
+    res.render("formulaire.html");
+  });
   app.get("/test", function (req, res) {
     res.render("index copy.html", { data: "wiow" });
   });
-  app.get("/admin", checkIfAuthenticated, checkIfAdmin, function (req, res) {
+  app.get("/admin", function (req, res) {
     res.render("admin.html");
   });
   app.get("/utilisateur", function (req, res) {
