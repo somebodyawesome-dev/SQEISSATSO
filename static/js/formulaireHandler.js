@@ -207,7 +207,7 @@ sumbitFormulaire.onclick = async (e) => {
       },
       body: JSON.stringify({
         formulaire: formulaires[selectedFormulaireIndex].formulaireId,
-        ecrirePar: user.uid,
+        ecritePar: user.uid,
         userType: formulaires.length > 1 ? "professeur" : "etudiant",
         commentaires: matieresReponse,
       }),

@@ -10,11 +10,11 @@ const { ajout, obtenir, ajoutAvecCleAleatoire } = require("./dao");
  */
 const ajoutReponse = async (req, res, next) => {
   const reponse = {
-    id: req.body.formulaire + "-" + req.body.ecrirePar,
+    id: req.body.formulaire + "-" + req.body.ecritePar,
     userType: req.body.userType,
     ecritePar: admin
       .firestore()
-      .doc(`${req.body.userType}/${req.body.ecrirePar}`),
+      .doc(`${req.body.userType}/${req.body.ecritePar}`),
     formulaire: admin.firestore().doc(`formulaire/${req.body.formulaire}`),
   };
   const batch = admin.firestore().batch();
@@ -23,7 +23,7 @@ const ajoutReponse = async (req, res, next) => {
     element.reponse = admin
       .firestore()
       .collection("reponse")
-      .doc(req.body.formulaire + "-" + req.body.ecrirePar);
+      .doc(req.body.formulaire + "-" + req.body.ecritePar);
     element.relatedTo = admin
       .firestore()
       .doc(`${element.sujet}/${element.relatedTo}`);

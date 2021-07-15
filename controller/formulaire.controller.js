@@ -68,8 +68,28 @@ const getForumulaireByNiveau = async (req, res, next) => {
       .where("ouvert", "==", true)
       .where("niveau", "in", req.niveau)
       .get();
+    const responseQuerySnapShot = await admin
+      .firestore()
+      .collection(`reponse`)
+      .where(
+        "ecritePar",
+        "==",
+        admin
+          .firestore()
+          .doc(`${req.etudiant ? "etudiant" : "professeur"}/${req.body.authId}`)
+      )
+      .get();
+    let satisfiedForm = [];
+    for (const doc of responseQuerySnapShot.docs) {
+      const formulaire = doc.get("formulaire");
+      if (!!formulaire) {
+        satisfiedForm.push(formulaire);
+      }
+    }
     querySnapShot.forEach(async (formulaire) => {
-      formulaires.push(formulaire.ref);
+      if (formulaire in satisfiedForm) {
+        formulaires.push(formulaire.ref);
+      }
     });
     req.formulaires = formulaires;
     next();
