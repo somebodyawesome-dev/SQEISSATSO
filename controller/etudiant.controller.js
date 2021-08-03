@@ -73,6 +73,24 @@ const etudiantExist = async (email) => {
       .get()
   ).exists;
 };
+const getAllEtudiant = async (req, res, next) => {
+  var etudiants = [];
+  try {
+    const querySnapShot = await admin
+      .firestore()
+      .collection("etudiant")
+      .get();
+    querySnapShot.forEach(async (etudiant) => {
+      etudiants.push(etudiant.ref);
+    });
+    req.etudiants = etudiants;
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
 module.exports.ajoutEtudiant = ajoutEtudiant;
 module.exports.getEtudiant = getEtudiant;
 module.exports.etudiantExist = etudiantExist;
+module.exports.getAllEtudiant = getAllEtudiant;

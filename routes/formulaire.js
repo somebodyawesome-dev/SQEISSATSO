@@ -3,7 +3,7 @@ const {
   ajoutFormulaire,
   getFormulaire,
   getForumulaireByNiveau,
-  getAllForumulaire,
+  getAllFormulaire,
 } = require("../controller/formulaire.controller");
 const { getMatiereByNiveau } = require("../controller/matiere.controller");
 const { getNiveauByUser } = require("../controller/niveau.controller");
@@ -73,7 +73,7 @@ module.exports = (app) => {
     "/getAllFormulaire",
     checkIfAuthenticated,
     checkIfAdmin,
-    getAllForumulaire,
+    getAllFormulaire,
     async (req, res) => {
       try {
         var formulaires = [];

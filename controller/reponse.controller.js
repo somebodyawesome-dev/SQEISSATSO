@@ -55,6 +55,21 @@ const getReponse = async (req, res, next) => {
     console.log(error);
   }
 };
+const getAllReponse = async (req, res, next) => {
+  var reponses = [];
+  try {
+    const querySnapShot = await admin.firestore().collection("reponse").get();
+    querySnapShot.forEach(async (reponse) => {
+      reponses.push(reponse.ref);
+    });
+    req.reponses = reponses;
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
 
 module.exports.ajoutReponse = ajoutReponse;
 module.exports.getReponse = getReponse;
+module.exports.getAllReponse = getAllReponse;

@@ -99,7 +99,7 @@ const getForumulaireByNiveau = async (req, res, next) => {
   }
 };
 
-const getAllForumulaire = async (req, res, next) => {
+const getAllFormulaire = async (req, res, next) => {
   var formulaires = [];
   try {
     const querySnapShot = await admin
@@ -120,4 +120,4 @@ module.exports.ajoutFormulaire = ajoutFormulaire;
 module.exports.getFormulaire = getFormulaire;
 module.exports.formulaireExist = formulaireExist;
 module.exports.getForumulaireByNiveau = getForumulaireByNiveau;
-module.exports.getAllForumulaire = getAllForumulaire;
+module.exports.getAllFormulaire = getAllFormulaire;

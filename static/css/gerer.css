@@ -22,11 +22,7 @@ input[type="submit"]:hover {
   background-color: #5f90ba;
 }
 
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
+
 .bouton1 {
   display: flex;
   justify-content: space-around;

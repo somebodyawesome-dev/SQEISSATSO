@@ -7,3 +7,17 @@ class Etudiant extends Utilisateur {
     Object.assign(this, data);
   }
 }
+const etudiantConverter = {
+  toFirestore(etudiant) {
+    return {
+      etudiantId: etudiant.etudiantId,
+      niveau: admin.firestore().doc(`niveau/${etudiant.niveau}`),
+    };
+  },
+  fromFirestore(snapshot, options) {
+    const data = snapshot.data(options);
+    data.niveau = data.niveau.id;
+    return data;
+  },
+};
+module.exports.etudiantConverter = etudiantConverter;

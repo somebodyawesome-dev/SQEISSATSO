@@ -33,8 +33,8 @@
     </script>
     <script defer src="js/navBar.js"></script>
     <script defer src="js/listeFormulaireHandler.js"></script>
-    <script defer src="js/listeReponseHandler.js"></script>
-
+    <!-- <script defer src="js/listeReponseHandler.js"></script> -->
+<script defer src="js/adminHandler.js"></script>
   </head>
   <body>
     <header>
@@ -83,12 +83,12 @@
           <div>
             <div class="cadre">
               <div class="joli">
-                <p>1200</p>
+                <p id="nbUser"></p>
                 <p>utilisateur total</p>
               </div>
 
               <div class="joli">
-                <p>12</p>
+                <p id="nbReponse"></p>
                 <p>formulaires remplies</p>
               </div>
             </div>
@@ -107,6 +107,9 @@
         <!--  -->
         <!-- for,ulqire contqiner -->
         <div class="main-container page">
+          <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
+          >&#9776;
+        </span>
           <div class="formulaire-title">
             <div><h2>Liste de formulaires</h2></div>
             <div></div>
@@ -126,43 +129,38 @@
         <!--  -->
   <!--liste reponse-->
   <div class="main-container page">
+    <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
+    >&#9776;
+  </span>
     <div class="formulaire-title">
       <div><h2>Liste de réponses</h2></div>
       <div></div>
     </div>
-    <div class="formulaire-container" id="listeR-container"></div>
+    <div class="formulaire-container" id="reponse-container"></div>
 </div>
 <!---->
-        <div class="page">
-          <form>
-            <div>
-              <label for="id">formulaireId:</label>
-              <input type="text" id="id" name="id" />
-              <label for="niveau">niveau:</label>
-              <input type="text" id="niveau" name="niveau" />
-              <label for="ouvert">ouvert:</label>
-              <input type="text" id="ouvert" name="ouvert" />
-              <label for="semestre">semestre:</label>
-              <input type="text" id="semestre" name="semestre" />
-            </div>
-            <div class="bouton1">
-              <input type="submit" value="abondonner" id="submit" />
+<div class="page">
+  <form>
+    <div>
+      <label for="id">formulaireId:</label>
+      <input type="text" id="id" name="id" />
+      <label for="niveau">niveau:</label>
+      <input type="text" id="niveau" name="niveau" />
+      <label for="ouvert">ouvert:</label>
+      <input type="text" id="ouvert" name="ouvert" />
+      <label for="semestre">semestre:</label>
+      <input type="text" id="semestre" name="semestre" />
+    </div>
+    <div class="bouton1">
+      <input type="submit" value="abondonner" id="submit" />
 
-              <input type="submit" value="enregistrer" id="submit" />
+      <input type="submit" value="enregistrer" id="submit" />
 
-              <input type="submit" value="supprimer" id="submit" />
-            </div>
-          </form>
-        </div>
-        <!--liste reponse-->
-        <div class="main-container page">
-          <div class="formulaire-title">
-            <div><h2>Liste de réponses</h2></div>
-            <div></div>
-          </div>
-          <div class="formulaire-container" id="listeR-container"></div>
-      </div>
-      <!---->
+      <input type="submit" value="supprimer" id="submit" />
+    </div>
+  </form>
+</div>
+<!---->    
     </div>
   </body>
 </html>

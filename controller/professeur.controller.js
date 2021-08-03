@@ -70,6 +70,24 @@ const professeurExist = async (email) => {
       .get()
   ).exists;
 };
+const getAllProfesseur = async (req, res, next) => {
+  var professeurs = [];
+  try {
+    const querySnapShot = await admin
+      .firestore()
+      .collection("professeur")
+      .get();
+    querySnapShot.forEach(async (professeur) => {
+      professeurs.push(professeur.ref);
+    });
+    req.professeurs = professeurs;
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
 module.exports.ajoutProfesseur = ajoutProfesseur;
 module.exports.getProfesseur = getProfesseur;
 module.exports.professeurExist = professeurExist;
+module.exports.getAllProfesseur = getAllProfesseur;
