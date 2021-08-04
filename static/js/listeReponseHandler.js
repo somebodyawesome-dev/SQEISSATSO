@@ -47,7 +47,7 @@ firebase.auth().onIdTokenChanged(async (userCred) => {
         reponse">
         <a href="/Greponse" class="animated-button thar-three" id="${element.id}">
         <div><h2>${element.id}</h2></div>
-          <div><h2>${element.ecrirePar}</h2></div>
+          <div><h2>${element.ecritePar}</h2></div>
         </a>
         </div>`;
       });

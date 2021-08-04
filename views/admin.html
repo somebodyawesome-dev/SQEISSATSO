@@ -31,10 +31,11 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
+    <script defer src="js/adminHandler.js"></script>
     <script defer src="js/navBar.js"></script>
     <script defer src="js/listeFormulaireHandler.js"></script>
+
     <!-- <script defer src="js/listeReponseHandler.js"></script> -->
-<script defer src="js/adminHandler.js"></script>
   </head>
   <body>
     <header>
@@ -105,62 +106,44 @@
           </div>
         </div>
         <!--  -->
-        <!-- for,ulqire contqiner -->
-        <div class="main-container page">
+        <!-- formulaire container -->
+        <div class="main page" >
           <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
-          >&#9776;
-        </span>
+            >&#9776;
+          </span>
           <div class="formulaire-title">
             <div><h2>Liste de formulaires</h2></div>
             <div></div>
           </div>
           <div class="formulaire-container" id="liste-container"></div>
-          <div class="bouton">
-            <input
-              type="image"
-              src="img/plus.png"
-              alt="Submit"
-              width="48"
-              height="48"
-            />
-            <h4>Ajouter une nouvelle formulaire</h4>
+          <div id="changerF">
+            <div class="bouton1">
+              <input type="submit" value="abondonner" id="submit" onclick="abondonnerFormulaire()" />
+
+              <input type="submit" value="enregistrer" id="submit" onclick="updateFormulaire()" />
+            </div>
           </div>
+         
+          </div>
+          <!---->
+          
         </div>
-        <!--  -->
-  <!--liste reponse-->
-  <div class="main-container page">
-    <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
+ <!--liste reponse-->
+ <div class="main-container page">
+  <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
     >&#9776;
   </span>
-    <div class="formulaire-title">
-      <div><h2>Liste de réponses</h2></div>
-      <div></div>
-    </div>
-    <div class="formulaire-container" id="reponse-container"></div>
+  <div class="formulaire-title">
+    <div><h2>Liste de réponses</h2></div>
+    <div></div>
+  </div>
+  <div class="formulaire-container" id="reponse-container"></div>
 </div>
-<!---->
-<div class="page">
-  <form>
-    <div>
-      <label for="id">formulaireId:</label>
-      <input type="text" id="id" name="id" />
-      <label for="niveau">niveau:</label>
-      <input type="text" id="niveau" name="niveau" />
-      <label for="ouvert">ouvert:</label>
-      <input type="text" id="ouvert" name="ouvert" />
-      <label for="semestre">semestre:</label>
-      <input type="text" id="semestre" name="semestre" />
-    </div>
-    <div class="bouton1">
-      <input type="submit" value="abondonner" id="submit" />
+        <!---->
+      </div>
 
-      <input type="submit" value="enregistrer" id="submit" />
-
-      <input type="submit" value="supprimer" id="submit" />
-    </div>
-  </form>
-</div>
-<!---->    
+      <!--  -->
+     
     </div>
   </body>
 </html>

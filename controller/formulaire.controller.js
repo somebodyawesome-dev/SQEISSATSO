@@ -1,4 +1,5 @@
 const { admin } = require("../configs/firebase");
+const { formulaireConverter } = require("../models/Formulaire/Formulaire");
 const { ajout, obtenir, supprimer } = require("./dao");
 
 /**
@@ -116,8 +117,30 @@ const getAllFormulaire = async (req, res, next) => {
     res.status(500).send(error);
   }
 };
+const updateFormulaire = async (req, res, next) => {
+  try {
+    const { updatedFormulaire } = req.body;
+    const batch = admin.firestore().batch();
+    for (let i = 0; i < updatedFormulaire.length; i++) {
+      batch.update(
+        admin
+          .firestore()
+          .doc(`formulaire/${updatedFormulaire[i].formulaireId}`)
+          .withConverter(formulaireConverter),
+        updatedFormulaire[i]
+      );
+    }
+    batch.commit();
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
+
 module.exports.ajoutFormulaire = ajoutFormulaire;
 module.exports.getFormulaire = getFormulaire;
 module.exports.formulaireExist = formulaireExist;
 module.exports.getForumulaireByNiveau = getForumulaireByNiveau;
 module.exports.getAllFormulaire = getAllFormulaire;
+module.exports.updateFormulaire = updateFormulaire;

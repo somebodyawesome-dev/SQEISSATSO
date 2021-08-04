@@ -22,8 +22,8 @@ input[type="submit"]:hover {
   background-color: #5f90ba;
 }
 
-
 .bouton1 {
+  padding: 10px;
   display: flex;
   justify-content: space-around;
 }

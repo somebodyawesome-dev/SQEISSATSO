@@ -19,6 +19,8 @@ module.exports = (app) => {
   app.get("/admin", getAdmin);
   app.get(
     "/getDataForAdmin",
+    checkIfAuthenticated,
+    checkIfAdmin,
     getAllProfesseur,
     getAllEtudiant,
     getAllFormulaire,

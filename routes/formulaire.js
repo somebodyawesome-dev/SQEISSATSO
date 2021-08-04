@@ -1,9 +1,11 @@
+const { app } = require("firebase-admin");
 const { admin } = require("../configs/firebase");
 const {
   ajoutFormulaire,
   getFormulaire,
   getForumulaireByNiveau,
   getAllFormulaire,
+  updateFormulaire,
 } = require("../controller/formulaire.controller");
 const { getMatiereByNiveau } = require("../controller/matiere.controller");
 const { getNiveauByUser } = require("../controller/niveau.controller");
@@ -89,6 +91,20 @@ module.exports = (app) => {
         res.status(200).json({
           formulaires,
         });
+      } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+      }
+    }
+  );
+  app.put(
+    "/updateFormulaire",
+    checkIfAuthenticated,
+    checkIfAdmin,
+    updateFormulaire,
+    async (req, res) => {
+      try {
+        res.status(200).send("modification enregistrée");
       } catch (error) {
         console.log(error);
         res.status(500).send(error);
