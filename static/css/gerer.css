@@ -27,3 +27,15 @@ input[type="submit"]:hover {
   display: flex;
   justify-content: space-around;
 }
+.btns {
+  background-color: #5f90ba;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}

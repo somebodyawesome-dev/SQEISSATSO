@@ -34,4 +34,7 @@ module.exports = (app) => {
   app.get("/commentaires", function (req, res) {
     res.render("commentaires.html");
   });
+  app.get("/affichage", function (req, res) {
+    res.render("affichage.html");
+  });
 };

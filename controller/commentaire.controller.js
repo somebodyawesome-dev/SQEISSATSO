@@ -66,7 +66,24 @@ const getCommentaireByReponse = async (req, res, next) => {
     console.log(error);
   }
 };
-
+const getAllCommentaire = async (req, res, next) => {
+  var commentaires = [];
+  try {
+    const querySnapShot = await admin
+      .firestore()
+      .collection("commentaire")
+      .get();
+    querySnapShot.forEach(async (commentaire) => {
+      commentaires.push(commentaire.ref);
+    });
+    req.commentaires = commentaires;
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
 module.exports.ajoutCommentaire = ajoutCommentaire;
 module.exports.getCommentaireByReponse = getCommentaireByReponse;
 module.exports.ajoutCommentaireAPI = ajoutCommentaireAPI;
+module.exports.getAllCommentaire = getAllCommentaire;

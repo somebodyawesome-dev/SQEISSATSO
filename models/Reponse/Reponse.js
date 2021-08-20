@@ -15,10 +15,10 @@ const reponseConverter = {
   toFirestore(reponse) {
     return {
       id: reponse.id,
-      commentaires: reponse.commentaires,
       userType: reponse.userType,
       ecritePar: admin.firestore().doc(`ecritePar/${reponse.ecritePar}`),
       fromulaire: admin.firestore().doc(`formulaire/${reponse.formulaire}`),
+      isValide: reponse.isValide,
     };
   },
   fromFirestore(snapshot, options) {

@@ -1,0 +1,19 @@
+.styleReponse {
+  position: relative;
+}
+.a {
+  margin: 10px auto;
+  padding-top: 10px;
+  border-radius: 10px;
+
+  background-color: rgb(233, 232, 247);
+
+  backdrop-filter: grayscale(0.5) opacity(0.8);
+}
+.b {
+  padding: 5px;
+  font-size: small;
+}
+.title {
+  font-size: 16px;
+}

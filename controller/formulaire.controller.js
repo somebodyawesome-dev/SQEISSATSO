@@ -87,11 +87,11 @@ const getForumulaireByNiveau = async (req, res, next) => {
         satisfiedForm.push(formulaire);
       }
     }
-    querySnapShot.forEach(async (formulaire) => {
-      if (formulaire in satisfiedForm) {
+    for (const formulaire of querySnapShot.docs) {
+      if (satisfiedForm.length == 0 || formulaire in satisfiedForm) {
         formulaires.push(formulaire.ref);
       }
-    });
+    }
     req.formulaires = formulaires;
     next();
   } catch (error) {

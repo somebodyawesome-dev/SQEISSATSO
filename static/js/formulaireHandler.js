@@ -41,15 +41,15 @@ const setForm = (formulaireIndex) => {
           haveTp ? `Cour:` : ""
         }${nomMatiere}</h4></label><br />
         <div class="radio-container">
-          <input type="radio"  name="${nomMatiere}" value="note" />
+          <input type="radio"  name="${nomMatiere}" value="1" />
           <label class="taille" for="note">insuffisant</label>
-          <input type="radio"  name="${nomMatiere}" value="note" />
+          <input type="radio"  name="${nomMatiere}" value="2" />
           <label class="taille" for="note">assez bien</label>
-          <input type="radio"  name="${nomMatiere}" value="note" />
+          <input type="radio"  name="${nomMatiere}" value="3" />
           <label class="taille" for="note">bien</label>
-          <input type="radio"  name="${nomMatiere}" value="note" />
+          <input type="radio"  name="${nomMatiere}" value="4" />
           <label class="taille" for="note">très bien</label>
-          <input type="radio"  name="${nomMatiere}" value="note" />
+          <input type="radio"  name="${nomMatiere}" value="5" />
           <label class="taille" for="note">excellent</label><br /><br />
         </div>
         <textarea  name="${nomMatiere}"></textarea><br /><br />
@@ -58,15 +58,15 @@ const setForm = (formulaireIndex) => {
             ? `
         <label for="matiere"><h4>TP :${nomMatiere}</h4></label><br />
         <div class="radio-container">
-          <input type="radio"  name="${nomMatiere}-TP" value="note" />
+          <input type="radio"  name="${nomMatiere}-TP" value="1" />
           <label class="taille" for="note">insuffisant</label>
-          <input type="radio"  name="${nomMatiere}-TP" value="note" />
+          <input type="radio"  name="${nomMatiere}-TP" value="2" />
           <label class="taille" for="note">assez bien</label>
-          <input type="radio"  name="${nomMatiere}-TP" value="note" />
+          <input type="radio"  name="${nomMatiere}-TP" value="3" />
           <label class="taille" for="note">bien</label>
-          <input type="radio"  name="${nomMatiere}-TP" value="note" />
+          <input type="radio"  name="${nomMatiere}-TP" value="4" />
           <label class="taille" for="note">très bien</label>
-          <input type="radio"  name="${nomMatiere}-TP" value="note" />
+          <input type="radio"  name="${nomMatiere}-TP" value="5" />
           <label class="taille" for="note">excellent</label><br /><br />
         </div>
         <textarea name="${nomMatiere}-TP"></textarea><br /><br />

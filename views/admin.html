@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/admin.css" />
     <link rel="stylesheet" href="css/formulaire.css" />
     <link rel="stylesheet" href="css/gerer.css" />
+    <link rel="stylesheet" href="css/reponse.css" />
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
@@ -94,6 +95,7 @@
               </div>
             </div>
           </div>
+
           <div class="bouton">
             <input
               type="image"
@@ -107,43 +109,68 @@
         </div>
         <!--  -->
         <!-- formulaire container -->
-        <div class="main page" >
+        <div class="main page">
           <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
             >&#9776;
           </span>
-          <div class="formulaire-title">
-            <div><h2>Liste de formulaires</h2></div>
-            <div></div>
+          <div
+            class="formulaire-title"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <h2>Liste de formulaires</h2>
           </div>
           <div class="formulaire-container" id="liste-container"></div>
           <div id="changerF">
             <div class="bouton1">
-              <input type="submit" value="abondonner" id="submit" onclick="abondonnerFormulaire()" />
+              <input
+                type="submit"
+                value="abondonner"
+                id="submit"
+                onclick="abondonnerFormulaire()"
+              />
 
-              <input type="submit" value="enregistrer" id="submit" onclick="updateFormulaire()" />
+              <input
+                type="submit"
+                value="enregistrer"
+                id="submit"
+                onclick="updateFormulaire()"
+              />
             </div>
           </div>
-         
-          </div>
-          <!---->
-          
         </div>
- <!--liste reponse-->
- <div class="main-container page">
-  <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
-    >&#9776;
-  </span>
-  <div class="formulaire-title">
-    <div><h2>Liste de réponses</h2></div>
-    <div></div>
-  </div>
-  <div class="formulaire-container" id="reponse-container"></div>
-</div>
         <!---->
-      </div>
+        <!--liste reponse-->
+        <div class="main-container page">
+          <span style="font-size: 30px; cursor: pointer" onclick="openNav()"
+            >&#9776;
+          </span>
+          <div
+            class="formulaire-title"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <h2>Liste de réponses à valider</h2>
+          </div>
 
-      <!--  -->
-     
+          <div class="formulaire-container" id="reponse-container"></div>
+
+          <div
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <button class="btns" onclick="updateReponse()">sauvegarder</button>
+          </div>
+
+          <div class="styleReponse" id="showComment">
+            <div id="commentaire-container"></div>
+            <div class="bouton1">
+              <button onclick="green()">valider</button>
+              <button onclick="red()">supprimer</button>
+              <button onclick="hideComments()">annuler</button>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </div>
     </div>
   </body>
 </html>
