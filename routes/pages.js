@@ -31,4 +31,7 @@ module.exports = (app) => {
   app.get("/utilisateur", function (req, res) {
     res.render("utilisateur.html");
   });
+  app.get("/commentaires", function (req, res) {
+    res.render("commentaires.html");
+  });
 };
