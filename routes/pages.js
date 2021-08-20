@@ -31,4 +31,7 @@ module.exports = (app) => {
   app.get("/utilisateur", function (req, res) {
     res.render("utilisateur.html");
   });
+  app.get("/affichage", function (req, res) {
+    res.render("affichage.html");
+  });
 };
