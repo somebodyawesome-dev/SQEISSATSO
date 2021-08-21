@@ -21,37 +21,42 @@ const { admin } = require("../configs/firebase");
 module.exports = (app) => {
   app.post("/admin", ajoutAdmin);
   app.get("/admin", getAdmin);
-  app.post("/updateReponse", async (req, res) => {
-    const valideR = req.body.reponseValide;
-    const nValideR = req.body.reponseNonValide;
-    try {
-      const batch = admin.firestore().batch();
-      for (const resp of valideR) {
-        batch.update(admin.firestore().collection("reponse").doc(resp), {
-          isValide: true,
-        });
-      }
-      for (const resp of nValideR) {
-        const respRef = admin.firestore().collection("reponse").doc(resp);
-        const querySnapchot = await admin
-          .firestore()
-          .collection("commentaire")
-          .where("reponse", "==", respRef)
-          .get();
-        for (const doc of querySnapchot.docs) {
-          console.log("tfasa5");
-          batch.delete(doc.ref);
+  app.post(
+    "/updateReponse",
+    checkIfAuthenticated,
+    checkIfAdmin,
+    async (req, res) => {
+      const valideR = req.body.reponseValide;
+      const nValideR = req.body.reponseNonValide;
+      try {
+        const batch = admin.firestore().batch();
+        for (const resp of valideR) {
+          batch.update(admin.firestore().collection("reponse").doc(resp), {
+            isValide: true,
+          });
         }
+        for (const resp of nValideR) {
+          const respRef = admin.firestore().collection("reponse").doc(resp);
+          const querySnapchot = await admin
+            .firestore()
+            .collection("commentaire")
+            .where("reponse", "==", respRef)
+            .get();
+          for (const doc of querySnapchot.docs) {
+            console.log("tfasa5");
+            batch.delete(doc.ref);
+          }
 
-        batch.delete(respRef);
+          batch.delete(respRef);
+        }
+        await batch.commit();
+        res.status(200).send("reponse updated");
+      } catch (error) {
+        res.status(500).send(error);
+        console.log(error);
       }
-      await batch.commit();
-      res.status(200).send("reponse updated");
-    } catch (error) {
-      res.status(500).send(error);
-      console.log(error);
     }
-  });
+  );
 
   app.get(
     "/getDataForAdmin",

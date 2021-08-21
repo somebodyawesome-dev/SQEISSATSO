@@ -11,7 +11,56 @@
 .item {
   display: flex;
   flex-direction: column;
-  border: 1px solid gray;
+
   border-radius: 1rem;
+  padding: 1rem;
+  margin: 0px;
+}
+
+.niv {
   padding: 0.5rem;
+  padding-left: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: white;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  transition: all 0.5s ease-out;
+  border-bottom: 0.3px solid rgba(128, 128, 128, 0.288);
+  box-shadow: 1px 3px 10px #5f90ba;
+}
+.niv:hover {
+  background-color: #748cab;
+  color: white;
+}
+.niv:active {
+  background-color: #3e5c76;
+}
+.response {
+  border: none;
+  margin-left: 1.5rem;
+  animation: appearing 0.8s backwards;
+  transform-origin: top;
+  /* box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px; */
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.response h2 {
+  transition: all 0.5s ease-out;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.response h2:hover {
+  background-color: #a9bdda;
+}
+@keyframes appearing {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
 }

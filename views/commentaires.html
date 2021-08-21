@@ -29,6 +29,7 @@
       firebase.initializeApp(firebaseConfig);
     </script>
     <script defer src="js/navBar.js"></script>
+    <script defer src="js/commentaires.js"></script>
   </head>
   <body>
     <header>
@@ -42,22 +43,20 @@
       </nav>
     </header>
     <div class="container">
-      <div class="nivContainer">
+      <div class="nivContainer" id="itemContainer">
+        loading ...
         <!--  -->
-        <div class="item">
-          <div class="item niv">
+        <!-- <div class="item">
+          <div class="niv" onclick="showResponse(this)">
             <h2>niveau</h2>
           </div>
-          <div class="item respone">
+          <div class="item response" style="display: none">
+            <h2>response</h2>
+            <h2>response</h2>
+            <h2>response</h2>
             <h2>response</h2>
           </div>
-          <div class="item comment">
-            <h2>comments</h2>
-            <h2>comments</h2>
-            <h2>comments</h2>
-            <h2>comments</h2>
-          </div>
-        </div>
+        </div> -->
         <!--  -->
       </div>
     </div>

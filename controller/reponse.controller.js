@@ -89,7 +89,26 @@ const getAllReponseNonValide = async (req, res, next) => {
     res.status(500).send(error);
   }
 };
+const getAllReponseValide = async (req, res, next) => {
+  var reponses = [];
+  try {
+    const querySnapShot = await admin
+      .firestore()
+      .collection("reponse")
+      .where("isValide", "==", true)
+      .get();
+    querySnapShot.forEach(async (reponse) => {
+      reponses.push(reponse.ref);
+    });
+    req.reponses = reponses;
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
 module.exports.ajoutReponse = ajoutReponse;
 module.exports.getReponse = getReponse;
 module.exports.getAllReponse = getAllReponse;
 module.exports.getAllReponseNonValide = getAllReponseNonValide;
+module.exports.getAllReponseValide = getAllReponseValide;

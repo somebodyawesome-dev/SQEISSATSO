@@ -11,4 +11,5 @@ module.exports = function (app) {
   require("./formulaire")(app);
   require("./reponse")(app);
   require("./enseigne")(app);
+  require("./user")(app);
 };

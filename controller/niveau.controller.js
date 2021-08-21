@@ -70,7 +70,21 @@ const getNiveauByUser = async (req, res, next) => {
     console.log(error);
   }
 };
-
+const getAllNiveau = async (req, res, next) => {
+  try {
+    let niveau = [];
+    const querySnapShot = await admin.firestore().collection("niveau").get();
+    for (const doc of querySnapShot.docs) {
+      niveau.push(doc.ref);
+    }
+    req.niveau = niveau;
+    next();
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+};
 module.exports.ajoutNiveau = ajoutNiveau;
 module.exports.getNiveau = getNiveau;
 module.exports.getNiveauByUser = getNiveauByUser;
+module.exports.getAllNiveau = getAllNiveau;
