@@ -54,9 +54,9 @@ const updateReponse = async () => {
     body: JSON.stringify({ reponseNonValide, reponseValide }),
   });
   if (reponse.ok) {
-    alert("done");
+    alert("Mise à jour est effectué");
   } else {
-    alert("non");
+    alert("Mise à jour non effectué");
   }
 };
 const updateFormulaire = async () => {

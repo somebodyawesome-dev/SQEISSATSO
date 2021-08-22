@@ -196,8 +196,10 @@ sumbitFormulaire.onclick = async (e) => {
         note: filiereNote,
         relatedTo: formulaires[selectedFormulaireIndex].niveau,
         sujet: "niveau",
+        tp: false,
       });
     }
+
     const reponse = await fetch("/reponse", {
       method: "POST",
       headers: {
