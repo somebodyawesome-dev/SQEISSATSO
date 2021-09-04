@@ -37,4 +37,7 @@ module.exports = (app) => {
   app.get("/affichage", function (req, res) {
     res.render("affichage.html");
   });
+  app.get("/statistic", function (req, res) {
+    res.render("statistic.html");
+  });
 };

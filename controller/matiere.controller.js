@@ -87,8 +87,23 @@ const getMatiereByNiveau = async (req, res, next) => {
     console.log(error);
   }
 };
+const getAllMatiere = async (req, res, next) => {
+  let matieres = [];
+  try {
+    const snapshot = await admin.firestore().collection("matiere").get();
+    for (const doc of snapshot.docs) {
+      matieres.push(doc.ref);
+    }
+    req.matieres = matieres;
+    next();
+  } catch (error) {
+    res.status(500).send(error);
+    console.log(error);
+  }
+};
 
 module.exports.ajoutMatiere = ajoutMatiere;
 module.exports.getMatiere = getMatiere;
 module.exports.matiereExist = matiereExist;
 module.exports.getMatiereByNiveau = getMatiereByNiveau;
+module.exports.getAllMatiere = getAllMatiere;

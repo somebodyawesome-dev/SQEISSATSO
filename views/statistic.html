@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/navBar.css" />
+    <link rel="stylesheet" href="css/commentaires.css" />
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyAFsGCtYwxh6HAztiEqRNTM2uP3COOHjs8",
+        authDomain: "sqeissatso.firebaseapp.com",
+        projectId: "sqeissatso",
+        storageBucket: "sqeissatso.appspot.com",
+        messagingSenderId: "85998445266",
+        appId: "1:85998445266:web:0b70b9e55d4bb9a0ce030b",
+        measurementId: "G-T6CY1M9NFJ",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script defer src="js/navBar.js"></script>
+    <script defer src="js/statistic.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <img
+          src="img/issat.png"
+          alt=""
+          style="width: 120px; height: 60px; margin-left: 5%; margin-top: 10px"
+        />
+        <ul id="login-container"></ul>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="nivContainer" id="itemContainer">loading ...</div>
+    </div>
+    <div class="modalContainer" id="modalContainer">
+      <div class="commentContainer">
+        <button class="closeBtn" id="closeBtn">X</button>
+        <div class="comments" id="commentsContainer"></div>
+      </div>
+    </div>
+  </body>
+</html>
