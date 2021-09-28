@@ -42,6 +42,7 @@ const setComment = (comments = []) => {
   modalContainer.style.display = "flex";
 };
 const getHTMLforRep = (id) => {
+  console.log(id);
   let form = formulaires
     .filter((ele) => {
       return ele.niveau === id;

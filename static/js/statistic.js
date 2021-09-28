@@ -58,7 +58,7 @@ const getAverage = (id) => {
     return ele.sujet === "matiere" && id === ele.relatedTo;
   });
   return comment.length === 0
-    ? "not rated yet"
+    ? "n'est pas encore évalué"
     : (
         comment.reduce((a, b) => a + parseInt(b.note), 0) / comment.length
       ).toString() + "/5";

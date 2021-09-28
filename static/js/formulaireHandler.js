@@ -215,7 +215,8 @@ sumbitFormulaire.onclick = async (e) => {
       }),
     });
     if (reponse.ok) {
-      alert("your comment have been sumbited succesfuly");
+      alert("Votre réponse est bien enregistrée");
+      window.location.href = "/";
     } else {
       alert(await reponse.text());
     }

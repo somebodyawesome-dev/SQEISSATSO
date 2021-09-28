@@ -3,7 +3,11 @@ const loginContainer = document.getElementById("login-container");
 firebase.auth().onIdTokenChanged(async (user) => {
   if (user) {
     const idTokenResult = await user.getIdTokenResult();
-    if (!idTokenResult.claims.etudiant && !idTokenResult.claims.professeur) {
+    if (
+      !idTokenResult.claims.etudiant &&
+      !idTokenResult.claims.professeur &&
+      !idTokenResult.claims.admin
+    ) {
       alert("UNAUTHORIZED");
       console.log("UNAUTHORIZED");
       window.location.pathname = "/";

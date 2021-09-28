@@ -13,7 +13,7 @@ var signupButton = document.getElementById("signupButton");
       },
       body: JSON.stringify({
         email: email,
-        niveau: "FIA-02",
+        niveau: "LF-SI-01",
       }),
     });
     if (rep.ok) {
